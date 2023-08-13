@@ -1448,10 +1448,10 @@ pre code {
 }
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #eadbf6;
+  border-bottom: 1px solid #eadbf6;
 }
 .table tbody + tbody {
-  border-top: 2px solid #eadbf6;
+  border-top: 1px solid #eadbf6;
 }
 .table-sm td,
 .table-sm th {
