@@ -1,5 +1,16 @@
 <?php include("./connect.php");
 
+function randomPassword() {
+  $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+  $pass = array(); //remember to declare $pass as an array
+  $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+  for ($i = 0; $i < 8; $i++) {
+      $n = rand(0, $alphaLength);
+      $pass[] = $alphabet[$n];
+  }
+  return implode($pass); //turn the array into a string
+}
+
 if (isset($_POST["regcompanyname"])) {
   $company_name = $_POST["regcompanyname"];
   $hr_name = $_POST["reghrname"];
@@ -11,6 +22,7 @@ if (isset($_POST["regcompanyname"])) {
   $maximum_ctc = $_POST["regmaxctc"];
   $description = $_POST["regdescription"];
   $selection = $_POST["regselection"];
+  $password = randomPassword();
   
   if (isset($_POST["regfields"])){
     $selectedfields=$_POST["regfields"];
@@ -18,9 +30,9 @@ if (isset($_POST["regcompanyname"])) {
     foreach ($selectedfields as $fields){
       $interest_string=$interest_string.$fields.",";
     }
-    $query = "insert into companies (company_name, hr_name, phone, email, job_location, position_count, average_ctc, maximum_ctc, job_brief, selection_brief, categories) values ('$company_name', '$hr_name', $phone, '$email', '$location', '$position_count', '$average_ctc', '$maximum_ctc', '$description', '$selection', '$interest_string')";
+    $query = "insert into companies (company_name, hr_name, phone, email, job_location, position_count, average_ctc, maximum_ctc, job_brief, selection_brief, categories, password) values ('$company_name', '$hr_name', $phone, '$email', '$location', '$position_count', '$average_ctc', '$maximum_ctc', '$description', '$selection', '$interest_string', '$password')";
   }else{
-    $query = "insert into companies (company_name, hr_name, phone, email, job_location, position_count, average_ctc, maximum_ctc, job_brief, selection_brief) values ('$company_name', '$hr_name', $phone, '$email', '$location', '$position_count', '$average_ctc', '$maximum_ctc', '$description', '$selection')";
+    $query = "insert into companies (company_name, hr_name, phone, email, job_location, position_count, average_ctc, maximum_ctc, job_brief, selection_brief, password) values ('$company_name', '$hr_name', $phone, '$email', '$location', '$position_count', '$average_ctc', '$maximum_ctc', '$description', '$selection', '$password')";
   }
 
   $res = mysqli_query($conn, $query);
