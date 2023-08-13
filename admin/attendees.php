@@ -35,6 +35,7 @@ $redirectUrl = $url . "/admin/login.php";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    
 </head>
 
 <body id="page-top">
@@ -126,7 +127,7 @@ $redirectUrl = $url . "/admin/login.php";
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $q = "select * from students";
+                                        $q = "select * from students where phone not in (select student_id from allotments) OR phone in (SELECT e.student_id from allotments e WHERE e.timestamp = (SELECT MAX(timestamp) FROM allotments WHERE student_id = e.student_id) and status='not placed');";
                                         $r = mysqli_query($conn, $q);
                                         $i = 1;
 
@@ -162,7 +163,7 @@ $redirectUrl = $url . "/admin/login.php";
                                                         <option value=''></option>
                                                         $companylist
                                                     </select>
-                                                    <button id=" . $res['phone'] . " onclick='allot(this)' style='border:none;height: 35px;color: #39b16d;background-color:#d8efe2;border-radius:4px;padding:6px 12px;' disabled><i class='fas fa-chevron-right'></i></button>
+                                                    <button id=" . $res['phone'] . " onclick='allot(this)' style='border:none;height: 33px;color: #39b16d;background-color:#d8efe2;border-radius:4px;padding:6px 12px;' disabled><i class='fas fa-chevron-right'></i></button>
                                                     </td>
                                                   </td>
                                                 </tr>";
@@ -192,7 +193,9 @@ $redirectUrl = $url . "/admin/login.php";
                 </div>
             </footer>
             <!-- End of Footer -->
-
+            <div class="errorbox" id="errorbox">
+            
+            </div>
         </div>
         <!-- End of Content Wrapper -->
 
@@ -211,6 +214,7 @@ $redirectUrl = $url . "/admin/login.php";
 
     <!-- Core plugin JavaScript-->
     <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
@@ -239,12 +243,17 @@ $redirectUrl = $url . "/admin/login.php";
             if (element.value != '') {
                 let userbutton = document.getElementById(btnid)
                 userbutton.disabled = false;
+                $(userbutton).animate({
+                    backgroundColor: "#39b16d",
+                    color: "#fff"
+                }, 500);
                 userbutton.setAttribute("value", element.value)
+                
             }
         }
 
         function allot(element) {
-            $(element).css("backgroundColor","#fff");
+            
             $.ajax({
                 type: "POST",
                 url: "allotment.php",
@@ -253,13 +262,18 @@ $redirectUrl = $url . "/admin/login.php";
                     "student_id": element.id,
                 },
                 success: function(data) {
-                    $(element).attr("status", data);
-                    if (data == 1) {
-                        $(element).css("backgroundColor", "#d8efe2");
-                        $(element).html("<span class='text' style='color: #39b16d;font-weight: 400;'><i class='fas fa-check' style='margin-right: 5px;'></i>Present</span>")
+                    data = JSON.parse(data)
+                    console.log(data);
+                    if (data.status == 1) {
+                        location.reload();
                     } else {
-                        $(element).css("backgroundColor", "#fee5dd");
-                        $(element).html("<span class='text' style='color: #e55d34;font-weight: 400;'><i class='fas fa-times' style='margin-right: 5px;'></i>Absent</span>")
+                        document.getElementById("errorbox").innerHTML=`
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Something went wrong!</strong> `+data.error+`
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>`;
                     }
                 }
             });
