@@ -1,5 +1,6 @@
 <?php 
-    include("partial.php");
+    include("./partial.php");
+    $company = $_COOKIE["company"];
 ?>
 
 <?php 
@@ -8,14 +9,22 @@
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }else{
         $phone = $_GET['phone'];
-        $query = "select * from students where phone=$phone";
-        $res = mysqli_query($conn, $query);
-
-        if(mysqli_num_rows($res) < 1){
-            $message = "No such student exists";
+        $check_query = "select * from allotments where student_id='$phone' and company_id=$company";
+        $res_check_query = mysqli_query($conn, $check_query);
+        if(mysqli_num_rows($res_check_query) < 1){
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }else{
-            $res = $res->fetch_assoc();
+            $query = "select * from students where phone=$phone";
+            $res = mysqli_query($conn, $query);
+    
+            if(mysqli_num_rows($res) < 1){
+                $message = "No such student exists";
+            }else{
+                $res = $res->fetch_assoc();
+                $phone = $res["phone"];
+            }
         }
+
     }
 ?>
 
@@ -30,16 +39,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - View Profile</title>
+    <title>Company - View Profile</title>
 
     <!-- Custom fonts for this template-->
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Custom styles for this template-->
-    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -86,31 +95,53 @@
                                     </div>
                                     <div class="dropdown mystudentcardoperations no-arrow d-flex ">
                                         <?php 
-                                            if($res["attended"] == 1){
-                                                
-                                                echo '<a style="background-color: #d8efe2!important;border: none; cursor:default;" class="btn btn-success btn-icon-split ml-sm-0">
-                                                <span class="text" style="color: #39b16d;font-weight: 400;"><i class="fas fa-check" style="margin-right: 5px;"></i>Present</span>
-                                            </a>';
-                                            }else{
-                                                echo '<a style="background-color: #fee5dd!important;border: none; cursor:default;" class="btn btn-success btn-icon-split ml-sm-0">
-                                                <span class="text" style="color: #e55d34;font-weight: 400;"><i class="fas fa-times" style="margin-right: 5px;"></i>Absent</span>
-                                            </a>';
-                                            }
-                                        
-                                        ?>
+                                            $res_check_query = $res_check_query->fetch_assoc();
+                                            if($res_check_query["status"] == "placed"){ ?>
+                                            <a id="accept" style="background-color: #d8efe2!important;border: none; display:none;" class="btn btn-success btn-icon-split ml-sm-0">
+                                                <span class="text" style="color: #39b16d;font-weight: 400;"><i class="fas fa-check" style="margin-right: 5px;"></i>Accept</span>
+                                            </a>
+                                            <a id="accept_text" style="background-color: #fff!important;border: none;" class="btn btn-success btn-icon-split ml-sm-0">
+                                                <span class="text" style="color: #39b16d;font-weight: 400;">Accepted<i class="fas fa-check" style="margin-left: 5px;"></i></span>
+                                            </a>
+                                            <a id="reject" style="background-color: #fee5dd!important;border: none;" class="btn btn-danger mx-2 btn-icon-split">
+                                                <span class="text" style="color:#e55d34"><i class="fas fa-trash" style="margin-right: 5px;"></i>Reject</span>
+                                            </a>    
+                                            <a id="reject_text" style="background-color: #fff!important;border: none; display:none;" class="btn btn-danger mx-2 btn-icon-split">
+                                                <span class="text" style="color:#e55d34">Rejected<i class="fas fa-times" style="margin-left: 5px;"></i></span>
+                                            </a> 
 
-                                        <?php               
-                                            if($res["top"] == 1){
-                                                echo '<a style="background-color: #F0E5F8!important;border: none; cursor:default;" class="btn btn-danger mx-2 btn-icon-split">
-                                                <span class="text" style="color:#973cdd"><i class="fas fa-star" style="margin-right: 5px;"></i>Prime</span>
-                                            </a>  ';
-                                            }else{
-                                                echo '<a style="background-color: #fee5dd!important;border: none; cursor:default;" class="btn btn-danger mx-2 btn-icon-split">
-                                                <span class="text" style="color:#e55d34"><i class="fas fa-star" style="margin-right: 5px;"></i>Regular</span>
-                                            </a>  ';
-                                            }
+                                        <?php
+                                            }else if($res_check_query["status"] == "not placed"){ ?>
+                                            <a id="accept" style="background-color: #d8efe2!important;border: none;" class="btn btn-success btn-icon-split ml-sm-0">
+                                                <span class="text" style="color: #39b16d;font-weight: 400;"><i class="fas fa-check" style="margin-right: 5px;"></i>Accept</span>
+                                            </a>
+                                            <a id="accept_text" style="background-color: #fff!important;border: none; display:none;" class="btn btn-success btn-icon-split ml-sm-0">
+                                                <span class="text" style="color: #39b16d;font-weight: 400;">Accepted<i class="fas fa-check" style="margin-left: 5px;"></i></span>
+                                            </a>
+                                            <a id="reject" style="background-color: #fee5dd!important;border: none; display:none;" class="btn btn-danger mx-2 btn-icon-split">
+                                                <span class="text" style="color:#e55d34"><i class="fas fa-trash" style="margin-right: 5px;"></i>Reject</span>
+                                            </a>    
+                                            <a id="reject_text" style="background-color: #fff!important;border: none;" class="btn btn-danger mx-2 btn-icon-split">
+                                                <span class="text" style="color:#e55d34">Rejected<i class="fas fa-times" style="margin-left: 5px;"></i></span>
+                                            </a>
+
+                                        <?php
+                                            }else{ ?>
+                                                <a id="accept" style="background-color: #d8efe2!important;border: none;" class="btn btn-success btn-icon-split ml-sm-0">
+                                                    <span class="text" style="color: #39b16d;font-weight: 400;"><i class="fas fa-check" style="margin-right: 5px;"></i>Accept</span>
+                                                </a>
+                                                <a id="accept_text" style="background-color: #fff!important;border: none; display:none;" class="btn btn-success btn-icon-split ml-sm-0">
+                                                    <span class="text" style="color: #39b16d;font-weight: 400;">Accepted<i class="fas fa-check" style="margin-left: 5px;"></i></span>
+                                                </a>
+                                                <a id="reject" style="background-color: #fee5dd!important;border: none;" class="btn btn-danger mx-2 btn-icon-split">
+                                                    <span class="text" style="color:#e55d34"><i class="fas fa-trash" style="margin-right: 5px;"></i>Reject</span>
+                                                </a>    
+                                                <a id="reject_text" style="background-color: #fff!important;border: none; display:none;" class="btn btn-danger mx-2 btn-icon-split">
+                                                    <span class="text" style="color:#e55d34">Rejected<i class="fas fa-times" style="margin-left: 5px;"></i></span>
+                                                </a> 
+                                           <?php }
+                                        ?>
                                         
-                                        ?> 
                                         <a href="<?php echo $url. "/".$res["path"]; ?>" target="_blank" style="background-color: #fff5d8!important;border: none;" class="btn btn-danger btn-icon-split">
                                             <span class="text" style="color:#c19c2f"><i class="fas fa-file-download" style="margin-right: 5px;"></i>Resume</span>
                                         </a>    
@@ -221,21 +252,69 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="assets/js/sb-admin-2.min.js"></script>
+    <script src="../assets/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="../assets/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="assets/js/demo/chart-area-demo.js"></script>
-    <script src="assets/js/demo/chart-pie-demo.js"></script>
+    <script src="../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../assets/js/demo/chart-pie-demo.js"></script>
+
+    <script>
+        $("#accept").on("click", () => {
+            let company = '<?php echo $company; ?>';
+            let phone = '<?php echo $phone; ?>'; 
+            let status = "placed";           
+
+            $.ajax({
+            type: "POST",
+            url: "updatestatus.php",
+            data: {"status": status, "phone":phone, "company_id": company},
+            success: function(data){
+                if(data == 1){
+                    $("#accept").hide();
+                    $("#accept_text").show();
+                    $("#reject_text").hide();
+                    $("#reject").show();
+                }else{
+                    alert("something went wrong");
+                } 
+            }
+            });
+
+        });
+
+        $("#reject").on("click", () => {
+            let company = '<?php echo $company; ?>';
+            let phone = '<?php echo $phone; ?>';
+            let status = "not placed";  
+        
+            $.ajax({
+                type: "POST",
+                url: "updatestatus.php",
+                data: {"status": status, "phone":phone, "company_id": company},
+                success: function(data){
+                    if(data == 1){
+                        $("#reject").hide();
+                        $("#reject_text").show();
+                        $("#accept_text").hide();
+                        $("#accept").show();
+                    }else{
+                        alert("something went wrong");
+                    } 
+                }
+            });
+
+        });
+    </script>
 
 </body>
 

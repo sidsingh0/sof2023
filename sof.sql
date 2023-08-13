@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 12:46 PM
+-- Generation Time: Aug 13, 2023 at 02:04 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -29,11 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `allotments` (
   `id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
+  `student_id` varchar(100) NOT NULL,
   `company_id` int(11) NOT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'pending',
   `timestamp` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `allotments`
+--
+
+INSERT INTO `allotments` (`id`, `student_id`, `company_id`, `status`, `timestamp`) VALUES
+(1, '9372642011', 3, 'pending', '2023-08-13');
 
 -- --------------------------------------------------------
 
@@ -53,16 +60,17 @@ CREATE TABLE `companies` (
   `maximum_ctc` int(20) NOT NULL,
   `job_brief` varchar(500) NOT NULL,
   `selection_brief` varchar(500) NOT NULL,
-  `categories` varchar(500) NOT NULL
+  `categories` varchar(500) NOT NULL,
+  `password` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `companies`
 --
 
-INSERT INTO `companies` (`id`, `company_name`, `hr_name`, `phone`, `email`, `job_location`, `position_count`, `average_ctc`, `maximum_ctc`, `job_brief`, `selection_brief`, `categories`) VALUES
-(3, 'Grune designs ', 'Yoshita', '2147483647', 'yoshita.chitnis@grunedesigns.com', 'Thane, Mumbai Pune ', 4, 600000, 900000, 'Electrical Technician, Draftsman, Fire Fighting, Plumbing, HVAC, Mechanical Engineering ', 'FACE TO FACE INTERVIEW, ', 'Electrical,Mechanical,'),
-(4, 'TCS', 'Harmit', '9372642011', 'sidsinghcs@gmail.com', 'Thane', 2, 32, 32, '32', '32', 'Information Technology,');
+INSERT INTO `companies` (`id`, `company_name`, `hr_name`, `phone`, `email`, `job_location`, `position_count`, `average_ctc`, `maximum_ctc`, `job_brief`, `selection_brief`, `categories`, `password`) VALUES
+(3, 'Grune designs ', 'Yoshita', '2147483647', 'yoshita.chitnis@grunedesigns.com', 'Thane, Mumbai Pune ', 4, 600000, 900000, 'Electrical Technician, Draftsman, Fire Fighting, Plumbing, HVAC, Mechanical Engineering ', 'FACE TO FACE INTERVIEW, ', 'Electrical,Mechanical,', ''),
+(4, 'TCS', 'Harmit', '9372642011', 'sidsinghcs@gmail.com', 'Thane', 2, 32, 32, '32', '32', 'Information Technology,', '');
 
 -- --------------------------------------------------------
 
@@ -156,7 +164,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `allotments`
 --
 ALTER TABLE `allotments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `companies`
