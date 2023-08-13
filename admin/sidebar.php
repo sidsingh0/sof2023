@@ -43,13 +43,13 @@
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link">
+    <a href="top.php" class="nav-link">
     <i class="fas fa-fw fa-list"></i>
         <span>Top Candidates</span>
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link">
+    <a href="marks.php" class="nav-link">
     <i class="fas fa-fw fa-list"></i>
         <span>Update Apti Marks</span>
     </a>
