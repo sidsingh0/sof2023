@@ -137,6 +137,15 @@
                                             <p class="m-0 font-weight-light text-xs" style="color:#8c90ae;">Email address</p>
                                             <p style="color: #302a68;"><?php echo $res["email"]; ?></p>
                                         </div>
+                                        <?php
+                                            $dob=$res["dob"];
+                                            $diff = (date('Y') - date('Y',strtotime($dob)));
+                                            
+                                        ?>
+                                        <div class="mb-3">
+                                            <p class="m-0 font-weight-light text-xs" style="color:#8c90ae;">Age</p>
+                                            <p style="color: #302a68;"><?php echo $diff; ?> Years</p>
+                                        </div>
                                     </div>
 
                                     
