@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 10:40 AM
+-- Generation Time: Aug 13, 2023 at 12:46 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -31,7 +31,7 @@ CREATE TABLE `allotments` (
   `id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `status` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'pending',
   `timestamp` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -86,17 +86,18 @@ CREATE TABLE `students` (
   `path` varchar(1000) NOT NULL,
   `dob` date NOT NULL,
   `attended` int(11) NOT NULL DEFAULT 0,
-  `top` int(11) NOT NULL DEFAULT 0
+  `top` int(11) NOT NULL DEFAULT 0,
+  `apti_marks` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `first_name`, `last_name`, `phone`, `email`, `college`, `category`, `field`, `tenth_marks`, `twelfth_marks`, `degree_marks`, `year_of_passing`, `path`, `dob`, `attended`, `top`) VALUES
-(11, 'Siddharth', 'Singh', 9372642010, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', '12th HSC', '12th HSC', 99, 99, 10, 2, 'uploads/9372642010.pdf', '2000-09-07', 0, 0),
-(9, 'Siddharth', 'Singh', 9372642011, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 95, 95, 95, 2002, 'uploads/9372642011.pdf', '2023-08-19', 1, 0),
-(10, 'Siddharth', 'Singh', 9372642014, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 12, 12, 0, 12, 'uploads/9372642014.pdf', '2023-08-25', 0, 0);
+INSERT INTO `students` (`id`, `first_name`, `last_name`, `phone`, `email`, `college`, `category`, `field`, `tenth_marks`, `twelfth_marks`, `degree_marks`, `year_of_passing`, `path`, `dob`, `attended`, `top`, `apti_marks`) VALUES
+(11, 'Siddharth', 'Singh', 9372642010, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', '12th HSC', '12th HSC', 99, 99, 10, 2, 'uploads/9372642010.pdf', '2000-09-07', 0, 0, 58),
+(9, 'Siddharth', 'Singh', 9372642011, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 95, 95, 95, 2002, 'uploads/9372642011.pdf', '2023-08-19', 1, 1, 4),
+(10, 'Siddharth', 'Singh', 9372642014, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 12, 12, 0, 12, 'uploads/9372642014.pdf', '2023-08-25', 0, 1, 0);
 
 -- --------------------------------------------------------
 
