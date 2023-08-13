@@ -10396,3 +10396,41 @@ th{
 td{
   color:#9599B4;
 }
+#dataTable_length{
+  margin: 20px;
+}
+#dataTable_length label{
+  margin:0px;
+  color:#9599B4;
+}
+#dataTable_filter{
+  margin: 20px !important;
+  color:#9599B4;
+}
+#dataTable_filter label{
+  margin-bottom:0px!important;
+  color:#9599B4;
+}
+#dataTable_filter input{
+  background-color: ;
+}
+#dataTable{
+  margin: 0px!important;
+}
+#dataTable_paginate{
+  margin: 20px;
+}
+#dataTable_info{
+  padding:0px;
+  margin: 20px;
+  color:#9599B4;
+}
+.col-sm-12:has(#dataTable_info) {
+  /* padding: 0.25rem 0.5rem; */
+  display: flex;
+  align-items: center;
+}
+.page-item.active .page-link{
+  background-color: #9A53D2;
+  border: 1px solid #eadbf6;
+}
