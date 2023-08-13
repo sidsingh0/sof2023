@@ -10434,3 +10434,10 @@ td{
   background-color: #9A53D2;
   border: 1px solid #eadbf6;
 }
+
+.errorbox{
+  position:fixed;
+  top:50px;
+  right:50%;
+  translate: 50% 0;
+}
