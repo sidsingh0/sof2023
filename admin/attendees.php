@@ -121,6 +121,7 @@ $redirectUrl = $url . "/admin/login.php";
                                             <th>Sr</th>
                                             <th>Name</th>
                                             <th>Phone</th>
+                                            <th>Aptitude</th>
                                             <th>Field</th>
                                             <th>Company</th>
                                         </tr>
@@ -157,6 +158,7 @@ $redirectUrl = $url . "/admin/login.php";
                                                     <td>" . $i . "</td>
                                                     <td>" . $res['first_name'] . " " . $res['last_name'] . "</td>
                                                     <td>" . $res['phone'] . "</td>
+                                                    <td>" . $res['apti_marks'] ."</td>
                                                     <td>" . $res['field'] . "</td>
                                                     <td style='display:flex;gap:5px;'>
                                                     <select onchange='btneanbler(this," . $res['phone'] . ")' id='select-state' style='width:80%' placeholder='Company'>
