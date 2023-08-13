@@ -1448,7 +1448,7 @@ pre code {
 }
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 1px solid #eadbf6;
+  border-bottom: none;
 }
 .table tbody + tbody {
   border-top: 1px solid #eadbf6;
@@ -1458,7 +1458,7 @@ pre code {
   padding: 0.3rem;
 }
 .table-bordered {
-  border: 1px solid #eadbf6;
+  border-bottom: 1px solid #eadbf6;
 }
 .table-bordered td,
 .table-bordered th {
@@ -9806,12 +9806,13 @@ a:focus {
 .sidebar-dark .nav-item .nav-link:active,
 .sidebar-dark .nav-item .nav-link:focus,
 .sidebar-dark .nav-item .nav-link:hover {
-  color: #fff;
+  color: hsl(274 64% 48% / 1);
+  background-color: #f5eefb;
 }
 .sidebar-dark .nav-item .nav-link:active i,
 .sidebar-dark .nav-item .nav-link:focus i,
 .sidebar-dark .nav-item .nav-link:hover i {
-  color: #fff;
+  /* color: #fff; */
 }
 .sidebar-dark .nav-item .nav-link[data-toggle="collapse"]::after {
   color: rgba(255, 255, 255, 0.5);
@@ -9826,13 +9827,13 @@ a:focus {
   background-color: #f5eefb;
 }
 .sidebar-dark #sidebarToggle::after {
-  color: rgba(255, 255, 255, 0.5);
+  color: hsl(274 64% 48% / 1);
 }
 .sidebar-dark #sidebarToggle:hover {
   background-color: rgba(255, 255, 255, 0.25);
 }
 .sidebar-dark.toggled #sidebarToggle::after {
-  color: rgba(255, 255, 255, 0.5);
+  color: hsl(274 64% 48% / 1);
 }
 .btn-circle {
   border-radius: 100%;
@@ -10431,7 +10432,8 @@ td{
   align-items: center;
 }
 .page-item.active .page-link{
-  background-color: #9A53D2;
+  background-color: #eadbf6;
+  color:#9A53D2;
   border: 1px solid #eadbf6;
 }
 

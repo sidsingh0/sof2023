@@ -357,7 +357,7 @@ function showHsc(element){
     eligibilityList.style.opacity = "1";
   }, 300); // Adjust the delay time (in milliseconds) as needed
 }
-
+ 
 function handleCategoryChange() {
   const selectElement = document.getElementById('regcategory');
   const selectedValue = selectElement.value;
@@ -365,12 +365,12 @@ function handleCategoryChange() {
   if (selectedValue=="Engineering"){
     fieldElement.innerHTML=`
     <option value="" disabled selected>Select an option</option>
-    <option value="Computer Science Engineering">Computer Science Engineering</option>
-    <option value="Information Technology Engineering">Information Technology Engineering</option>
-    <option value="Electronics and Telecommunications Engineering">Electronics and Telecommunications Engineering</option>
-    <option value="Electrical Engineering">Electrical Engineering</option>
-    <option value="Mechanical Engineering">Mechanical Engineering</option>
-    <option value="Civil Engineering">Civil Engineering</option>
+    <option value="Computer Science">Computer Science Engineering</option>
+    <option value="Information Technology">Information Technology Engineering</option>
+    <option value="Electronics and Telecommunications">Electronics and Telecommunications Engineering</option>
+    <option value="Electrical">Electrical Engineering</option>
+    <option value="Mechanical">Mechanical Engineering</option>
+    <option value="Civil">Civil Engineering</option>
     `
   }
   if (selectedValue=="Non-Engineering/Diploma"){

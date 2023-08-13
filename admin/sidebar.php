@@ -27,38 +27,39 @@
 <li class="nav-item mt-4">
     <a href="index.php" class="nav-link">
         <i class="fas fa-fw fa-list"></i>
-        <span>All Candidates</span>
+        <span>Take Attendance</span>
     </a>
 </li>
 <li class="nav-item">
     <a class="nav-link">
-    <i class="fas fa-fw fa-list"></i>
-        <span>Attendees</span>
+    <i class="fas fa-fw fa-user-tie"></i>
+        <span>Allot Company</span>
     </a>
 </li>
 <li class="nav-item">
     <a class="nav-link">
-    <i class="fas fa-fw fa-list"></i>
+    <i class="fas fa-fw fa-hourglass-half"></i>
         <span>Pending Candidates</span>
     </a>
 </li>
 <li class="nav-item">
     <a href="top.php" class="nav-link">
-    <i class="fas fa-fw fa-list"></i>
-        <span>Top Candidates</span>
+    <i class="fas fa-fw fa-star"></i>
+        <span>Prime Candidates</span>
     </a>
 </li>
-<li class="nav-item">
+<li class="nav-item mb-4">
     <a href="marks.php" class="nav-link">
-    <i class="fas fa-fw fa-list"></i>
+    <i class="fas fa-fw fa-pen"></i>
         <span>Update Apti Marks</span>
     </a>
 </li>
 
 <!-- Sidebar Toggler (Sidebar) -->
-<!-- <div class="text-center d-none d-md-inline" style="color:#302a68">
-    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-</div> -->
+<div class="text-center d-none d-md-inline">
+                <button class="border-0" style="border-radius:4px;" id="sidebarToggle"></button>
+</div>
+
 
 <!-- Sidebar Message -->
 

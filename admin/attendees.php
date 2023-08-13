@@ -35,7 +35,7 @@ $redirectUrl = $url . "/admin/login.php";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
-    
+
 </head>
 
 <body id="page-top">
@@ -109,9 +109,16 @@ $redirectUrl = $url . "/admin/login.php";
                         </div>
                     </div>
                     <div class="card mb-4">
-                        <div class="card-header py-3" style="border-bottom:1.5px solid #eadbf6; ">
-                            <h3 class="m-0 font-weight-medium" style="color:#302a68;">Allot Companies</h3>
-                            <p class="m-0 font-weight-light" style="color:#8c90ae;">All the attendees who have not been alloted companies and rejected candidates are listed below.</p>
+                        <div class="card-header py-3 d-flex" style="border-bottom:1.5px solid #eadbf6;align-items:center;justify-content:space-between ">
+                            <div class="">
+                                <h3 class="m-0 font-weight-medium" style="color:#302a68;">Allot Companies</h3>
+                                <p class="m-0 font-weight-light" style="color:#8c90ae;">All the attendees who have not been alloted companies and rejected candidates are listed below.</p>
+                            </div>
+                            <div class="d-flex" style="flex-direction:column;align-items:center;">
+                                <p style="color:#9A53D2;font-size:30px;margin:0;cursor:pointer;" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-question-circle"></i></p>
+                                <p class="text-xs m-0" style="color:#8c90ae;translate:0 -5px;">Companies</p>
+                            </div>
+                            
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
@@ -124,6 +131,7 @@ $redirectUrl = $url . "/admin/login.php";
                                             <th>Aptitude</th>
                                             <th>Field</th>
                                             <th>Company</th>
+                                            <th style="display:none;">Category</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -158,7 +166,7 @@ $redirectUrl = $url . "/admin/login.php";
                                                     <td>" . $i . "</td>
                                                     <td>" . $res['first_name'] . " " . $res['last_name'] . "</td>
                                                     <td>" . $res['phone'] . "</td>
-                                                    <td>" . $res['apti_marks'] ."</td>
+                                                    <td>" . $res['apti_marks'] . "</td>
                                                     <td>" . $res['field'] . "</td>
                                                     <td style='display:flex;gap:5px;'>
                                                     <select onchange='btneanbler(this," . $res['phone'] . ")' id='select-state' style='width:80%' placeholder='Company'>
@@ -167,7 +175,7 @@ $redirectUrl = $url . "/admin/login.php";
                                                     </select>
                                                     <button id=" . $res['phone'] . " onclick='allot(this)' style='border:none;height: 33px;color: #39b16d;background-color:#d8efe2;border-radius:4px;padding:6px 12px;' disabled><i class='fas fa-chevron-right'></i></button>
                                                     </td>
-                                                  </td>
+                                                    <td style='display:none'>".$res['category']."</td>
                                                 </tr>";
                                             $i++;
                                         }
@@ -195,9 +203,77 @@ $redirectUrl = $url . "/admin/login.php";
                 </div>
             </footer>
             <!-- End of Footer -->
-            <div class="errorbox" id="errorbox">
-            
+            <div class="errorbox" id="errorbox"></div>
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="">
+                                <h3 class="m-0 font-weight-medium" style="color:#302a68;">Companies</h3>
+                                <p class="m-0 font-weight-light" style="color:#8c90ae;">Below is a list of companies according to their interested fields.</p>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <?php
+                                $tips_list=["Computer Science","Information Technology","Electronics and Telecommunications","Electrical","Mechanical","Civil","Diploma","Commerce","Pharma","BSC Computer Science","BSC Information Technology","12th HSC"];
+                                foreach($tips_list as $item){
+                                    $escaped_item = mysqli_real_escape_string($conn, strtolower($item));
+                                    $tips_company = "SELECT * FROM companies WHERE lower(categories) LIKE '%" . $escaped_item . "%'";
+                                    $tips_company_res=mysqli_query($conn,$tips_company);
+                                    if (mysqli_num_rows($tips_company_res)>0){
+                                        echo '
+                                            <div class="mb-3" style="display:grid;grid-template-columns:auto 1fr;gap:7px;">
+                                                <p style="color:#302a68;margin:0;padding:0.375rem 0.75rem;">'.$item.'</p>
+                                            <div class="d-flex" style="gap:7px;flex-wrap:wrap">
+                                        ';
+                                        while ($tip = $tips_company_res->fetch_assoc()) {
+                                            echo '<p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">'.$tip["company_name"].'</p>';
+                                        }
+                                        echo '
+                                                </div>
+                                            </div>
+                                        ';
+                                    }                                    
+                                    
+                                }
+
+                            ?>
+                            <!-- <div class="mb-3" style="display:grid;grid-template-columns:auto 1fr;gap:7px;">
+                                <p style="color:#302a68;margin:0;padding:0.375rem 0.75rem;">Electrical Engineering:</p>
+                                <div class="d-flex" style="gap:7px;flex-wrap:wrap">
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Wipro</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">TCS</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Infosys</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                </div>
+                            </div>
+                            <div class="" style="display:grid;grid-template-columns:auto 1fr;gap:7px;">
+                                <p style="color:#302a68;margin:0;padding:0.375rem 0.75rem;">Electrical Engineering:</p>
+                                <div class="d-flex" style="gap:7px;flex-wrap:wrap">
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Wipro</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">TCS</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Infosys</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" style="background-color:#fee5dd;color:#e55d34;" data-dismiss="modal">Close</button>
+                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
         <!-- End of Content Wrapper -->
 
@@ -250,12 +326,12 @@ $redirectUrl = $url . "/admin/login.php";
                     color: "#fff"
                 }, 500);
                 userbutton.setAttribute("value", element.value)
-                
+
             }
         }
 
         function allot(element) {
-            
+
             $.ajax({
                 type: "POST",
                 url: "allotment.php",
@@ -269,9 +345,9 @@ $redirectUrl = $url . "/admin/login.php";
                     if (data.status == 1) {
                         location.reload();
                     } else {
-                        document.getElementById("errorbox").innerHTML=`
+                        document.getElementById("errorbox").innerHTML = `
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Something went wrong!</strong> `+data.error+`
+                            <strong>Something went wrong!</strong> ` + data.error + `
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
