@@ -107,8 +107,8 @@
                         </div>
                     </div>
                     <div class="card mb-4">
-                        <div class="card-header py-3" style="border:1.5px solid #eadbf6; ">
-                            <h3 class="m-0 font-weight-medium" style="color:#302a68;">All Candidates</h3>
+                    <div class="card-header py-3" style="border-bottom:1.5px solid #eadbf6; ">
+                        <h3 class="m-0 font-weight-medium" style="color:#302a68;">All Candidates</h3>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
