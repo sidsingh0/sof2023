@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Top Students</title>
+    <title>Admin - Update Aptitude Scores</title>
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -55,7 +55,7 @@
                 <div class="container-fluid mt-md-4">
                     <div class="card mb-4">
                         <div class="card-header py-3" style="border:1.5px solid #eadbf6; ">
-                            <h3 class="m-0 font-weight-medium" style="color:#302a68;">Edit Prime Candidates</h3>
+                            <h3 class="m-0 font-weight-medium" style="color:#302a68;">Update Aptitude Marks</h3>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
@@ -64,10 +64,10 @@
                                         <tr>
                                             <th>Sr</th>
                                             <th>Name</th>
-                                            <th>Email</th>
                                             <th>Phone</th>
                                             <th>Field</th>
-                                            <th>Prime?</th>
+                                            <th>Marks</th>
+                                         
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -77,30 +77,28 @@
                                         $i= 1;
 
                                         while($res=$r->fetch_assoc()){
-                                          $btn = "";
-                                          if($res["top"] == 1){
-                                              $btn = "<button status='".$res['top']."' value='".$res['phone']."' onclick='test(this)' style='background-color: #F0E5F8!important;border: none;' class='btn btn-success btn-icon-split ml-sm-0 w-100'>
-                                              <span class='text' style='color: #973cdd;font-weight: 400;'><i class='fas fa-star' style='margin-right: 5px;'></i>Prime</span>
-                                          
-                                              </button>";
-
-
-                                          }
-                                          else{
-                                            $btn = "<button status='".$res['top']."' value='".$res['phone']."' onclick='test(this)' style='background-color: #fee5dd!important;border: none;' class='btn btn-success btn-icon-split ml-sm-0 w-100'>
-                                            <span class='text' style='color: #e55d34;font-weight: 400;'><i class='fas fa-star' style='margin-right: 5px;'></i>Regular</span>
-                                        </button>";
-                                          }
                                   
                                             echo "<tr>
                                                     <td>".$i."</td>
                                                     <td>".$res['first_name']." ".$res['last_name']."</td>
-                                                    <td>".$res['email']."</td>
                                                     <td>".$res['phone']."</td>
                                                     <td>".$res['field']."</td>
-                                                    <td>".$btn."
+                                                    <td class='row'>
+                                                        <div class='col-md-7' >
+                                                            <p id='displaymarks".$res['phone']."'>".$res['apti_marks']."</p>  
+                                                            <input id='inputmarks".$res['phone']."' style='display: none;' type='number' value='".$res['apti_marks']."' name='marks' class='form-control mb-1'>  
+                                                        </div>
+                                                        <div class='col-md-5'>
+                                                            <button phone='".$res['phone']."' id='displaysubmit".$res['phone']."' onclick='change(this)' style='background-color: #d8efe2!important;border: none;' class='btn btn-success btn-icon-split ml-sm-0 w-100'>
+                                                                <span class='text' style='color: #39b16d;font-weight: 400;'><i class='fas fa-pen' style='margin-right: 5px;'></i></span>
+                                                            </button>
+
+                                                            <button onclick='submit(this)' phone='".$res['phone']."' id='inputsubmit".$res['phone']."' style='display: none;' style='background-color: #d8efe2!important;border: none;' class='btn btn-success btn-icon-split ml-sm-0 w-100'>
+                                                                <span class='text' style='color: #fff;font-weight: 400;'><i class='fas fa-check' style='margin-right: 5px;'></i></span>
+                                                            </button>
+                                                        </div>  
+                                                    </td>
                                                     
-                                                  </td>
                                                 </tr>";
                                             $i++;
                                         }
@@ -167,22 +165,35 @@
         responsive: true
       });
 
-      function test(element){
-        let top = $(element).attr("status");
-        let phone = element.value;
+      function change(e){
+        let p = $(e).attr("phone");
+        $("#displaymarks" +p).hide();
+        $("#displaysubmit" +p).hide();
+        $("#inputmarks" +p).show();
+        $("#inputsubmit" +p).show();
+      }
+
+
+      function submit(e){
+        let phone = $(e).attr("phone");
+        let marks = $("#inputmarks"+phone).val();
+        
+
         $.ajax({
           type: "POST",
-          url: "changeprime.php",
-          data: {"top": top, "phone":phone},
+          url: "updatemarks.php",
+          data: {"apti_marks": marks, "phone":phone},
           success: function(data){
-              $(element).attr("status", data);
               if(data == 1){
-                $(element).css("backgroundColor", "#F0E5F8");
-                $(element).html("<span class='text' style='color: #973cdd;font-weight: 400;'><i class='fas fa-star' style='margin-right: 5px;'></i>Prime</span>")
-              }else{
-                $(element).css("backgroundColor", "#fee5dd");
-                $(element).html("<span class='text' style='color: #e55d34;font-weight: 400;'><i class='fas fa-star' style='margin-right: 5px;'></i>Regular</span>")
-              }  
+                let p = phone;
+                $("#displaymarks" +p).show();
+                $("#displaymarks" +p).html(marks);
+                $("#displaysubmit" +p).show();
+                $("#inputmarks" +p).hide();
+                $("#inputsubmit" +p).hide();
+            }else{
+                alert("something went wrong");
+            } 
           }
         });
       }
