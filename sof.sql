@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 10, 2023 at 07:21 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Host: 127.0.0.1:3306
+-- Generation Time: Aug 13, 2023 at 06:36 AM
+-- Server version: 10.6.14-MariaDB-cll-lve
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sof`
+-- Database: `u170697705_sof`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +31,7 @@ CREATE TABLE `companies` (
   `id` int(11) NOT NULL,
   `company_name` varchar(100) NOT NULL,
   `hr_name` varchar(100) NOT NULL,
-  `phone` int(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `email` varchar(200) NOT NULL,
   `job_location` varchar(400) NOT NULL,
   `position_count` int(10) NOT NULL,
@@ -40,14 +40,15 @@ CREATE TABLE `companies` (
   `job_brief` varchar(500) NOT NULL,
   `selection_brief` varchar(500) NOT NULL,
   `categories` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `companies`
 --
 
 INSERT INTO `companies` (`id`, `company_name`, `hr_name`, `phone`, `email`, `job_location`, `position_count`, `average_ctc`, `maximum_ctc`, `job_brief`, `selection_brief`, `categories`) VALUES
-(1, 'TCS', 'Harmit', 2147483647, 'sidsinghcs@gmail.com', 'Thane', 2, 222, 2222, 'rhbhwrgEFG', 'gawasfwaf', 'Computer Science,');
+(3, 'Grune designs ', 'Yoshita', '2147483647', 'yoshita.chitnis@grunedesigns.com', 'Thane, Mumbai Pune ', 4, 600000, 900000, 'Electrical Technician, Draftsman, Fire Fighting, Plumbing, HVAC, Mechanical Engineering ', 'FACE TO FACE INTERVIEW, ', 'Electrical,Mechanical,'),
+(4, 'TCS', 'Harmit', '9372642011', 'sidsinghcs@gmail.com', 'Thane', 2, 32, 32, '32', '32', 'Information Technology,');
 
 -- --------------------------------------------------------
 
@@ -65,22 +66,22 @@ CREATE TABLE `students` (
   `category` varchar(100) NOT NULL,
   `field` varchar(300) NOT NULL,
   `tenth_marks` float NOT NULL,
-  `twelfth_marks` float NOT NULL,
-  `degree_marks` float NOT NULL,
+  `twelfth_marks` float NOT NULL DEFAULT 0,
+  `degree_marks` float NOT NULL DEFAULT 0,
   `year_of_passing` int(11) NOT NULL,
-  `path` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `path` varchar(1000) NOT NULL,
+  `dob` date NOT NULL,
+  `attended` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `first_name`, `last_name`, `phone`, `email`, `college`, `category`, `field`, `tenth_marks`, `twelfth_marks`, `degree_marks`, `year_of_passing`, `path`) VALUES
-(6, 'Siddharth', 'Singh', 992094562, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'HSC (12th passed)', 'HSC (12th passed)', 100, 100, 100, 2002, 'uploads/992094562.pdf'),
-(1, 'Siddharth', 'Singh', 9372642011, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 12, 12, 12, 12, ''),
-(2, 'Harmit', 'Saini', 9967775891, 'bmovies52@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Information Technology Engineering', 95, 70, 98, 2002, ''),
-(3, 'Harmit', 'Saini', 99677758917, 'bmovies52@gmail.com', 'A.P. Shah Institute of Technology', 'Non-Engineering/Diploma', 'Diploma', 95, 70, 98, 2002, ''),
-(4, 'Harmit', 'Saini', 9967775891799, 'bmovies52@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 95, 70, 98, 2002, '');
+INSERT INTO `students` (`id`, `first_name`, `last_name`, `phone`, `email`, `college`, `category`, `field`, `tenth_marks`, `twelfth_marks`, `degree_marks`, `year_of_passing`, `path`, `dob`, `attended`) VALUES
+(11, 'Siddharth', 'Singh', 9372642010, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', '12th HSC', '12th HSC', 99, 99, 10, 2, 'uploads/9372642010.pdf', '2000-09-07', 0),
+(9, 'Siddharth', 'Singh', 9372642011, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 95, 95, 95, 2002, 'uploads/9372642011.pdf', '2023-08-19', 0),
+(10, 'Siddharth', 'Singh', 9372642014, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 12, 12, 0, 12, 'uploads/9372642014.pdf', '2023-08-25', 0);
 
 --
 -- Indexes for dumped tables
@@ -107,13 +108,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
