@@ -358,28 +358,6 @@ $redirectUrl = $url . "/admin/login.php";
 
         }
 
-        function test(element) {
-            let attended = $(element).attr("status");
-            let phone = element.value;
-            $.ajax({
-                type: "POST",
-                url: "attendance.php",
-                data: {
-                    "attended": attended,
-                    "phone": phone
-                },
-                success: function(data) {
-                    $(element).attr("status", data);
-                    if (data == 1) {
-                        $(element).css("backgroundColor", "#d8efe2");
-                        $(element).html("<span class='text' style='color: #39b16d;font-weight: 400;'><i class='fas fa-check' style='margin-right: 5px;'></i>Present</span>")
-                    } else {
-                        $(element).css("backgroundColor", "#fee5dd");
-                        $(element).html("<span class='text' style='color: #e55d34;font-weight: 400;'><i class='fas fa-times' style='margin-right: 5px;'></i>Absent</span>")
-                    }
-                }
-            });
-        }
     </script>
 
 </body>

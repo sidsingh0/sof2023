@@ -48,6 +48,12 @@
         <span>Prime Candidates</span>
     </a>
 </li>
+<li class="nav-item">
+    <a href="companylist.php" class="nav-link">
+    <i class="fas fa-fw fa-eye"></i>
+        <span>View companies</span>
+    </a>
+</li>
 <li class="nav-item mb-4">
     <a href="marks.php" class="nav-link">
     <i class="fas fa-fw fa-pen"></i>
