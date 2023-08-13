@@ -8,7 +8,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item mt-2">
-    <a class="nav-link d-flex flex-column p-0">
+    <a class="nav-link d-flex flex-column p-0 mb-0">
         <!-- <i class="fas fa-fw fa-cog"></i> -->
         <div class="" style="background-color:#f5eefb;padding: 0.75rem 1.5rem;border-radius: 4px;">
             <span style="font-weight: 500;font-size: 18px;color:#302a68;display: block;">Manage JOBFAIR</span>
