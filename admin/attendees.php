@@ -130,7 +130,7 @@ $redirectUrl = $url . "/admin/login.php";
                                         $r = mysqli_query($conn, $q);
                                         $i = 1;
 
-                                        
+
 
                                         while ($res = $r->fetch_assoc()) {
                                             $btn = "";
@@ -145,24 +145,24 @@ $redirectUrl = $url . "/admin/login.php";
                                         </button>";
                                             }
 
-                                        $company_query = "select * from companies";
-                                        $company_query_res = mysqli_query($conn, $company_query);
-                                        $companylist="";
-                                        while ($company = $company_query_res->fetch_assoc()) {
-                                            $companylist.="<option value='".$company['id']."'>".$company['company_name']."</option>";
-                                        }
+                                            $company_query = "select * from companies";
+                                            $company_query_res = mysqli_query($conn, $company_query);
+                                            $companylist = "";
+                                            while ($company = $company_query_res->fetch_assoc()) {
+                                                $companylist .= "<option value='" . $company['id'] . "'>" . $company['company_name'] . "</option>";
+                                            }
 
                                             echo "<tr>
                                                     <td>" . $i . "</td>
                                                     <td>" . $res['first_name'] . " " . $res['last_name'] . "</td>
                                                     <td>" . $res['phone'] . "</td>
                                                     <td>" . $res['field'] . "</td>
-                                                    <td>
-                                                    <select id='select-state' placeholder='Select a company'>
-                                                        <option value=''>Select a company</option>
+                                                    <td style='display:flex;gap:5px;'>
+                                                    <select onchange='btneanbler(this," . $res['phone'] . ")' id='select-state' style='width:80%' placeholder='Company'>
+                                                        <option value=''></option>
                                                         $companylist
                                                     </select>
-                                                    <button></button>
+                                                    <button id=" . $res['phone'] . " onclick='allot(this)' style='border:none;height: 35px;color: #39b16d;background-color:#d8efe2;border-radius:4px;padding:6px 12px;' disabled><i class='fas fa-chevron-right'></i></button>
                                                     </td>
                                                   </td>
                                                 </tr>";
@@ -234,6 +234,37 @@ $redirectUrl = $url . "/admin/login.php";
                 sortField: 'text'
             });
         });
+
+        function btneanbler(element, btnid) {
+            if (element.value != '') {
+                let userbutton = document.getElementById(btnid)
+                userbutton.disabled = false;
+                userbutton.setAttribute("value", element.value)
+            }
+        }
+
+        function allot(element) {
+            $(element).css("backgroundColor","#fff");
+            $.ajax({
+                type: "POST",
+                url: "allotment.php",
+                data: {
+                    "company_id": element.value,
+                    "student_id": element.id,
+                },
+                success: function(data) {
+                    $(element).attr("status", data);
+                    if (data == 1) {
+                        $(element).css("backgroundColor", "#d8efe2");
+                        $(element).html("<span class='text' style='color: #39b16d;font-weight: 400;'><i class='fas fa-check' style='margin-right: 5px;'></i>Present</span>")
+                    } else {
+                        $(element).css("backgroundColor", "#fee5dd");
+                        $(element).html("<span class='text' style='color: #e55d34;font-weight: 400;'><i class='fas fa-times' style='margin-right: 5px;'></i>Absent</span>")
+                    }
+                }
+            });
+
+        }
 
         function test(element) {
             let attended = $(element).attr("status");
