@@ -7,11 +7,11 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $query = "select * from companies where id='$email'";
+        $query = "select * from user where email='$email'";
         $res = mysqli_query($conn, $query);
 
         if(mysqli_num_rows($res) < 1){
-            $message = "Incorrect Company Name";
+            $message = "Incorrect Email";
         }else{
             $res = $res->fetch_assoc();
             if($res["password"] == $password){
@@ -123,23 +123,12 @@
                 <h1 style="color:#302a68;font-weight: 500;">Sign In</h1>
                 <form class="mt-4" action="login.php" method="POST">
                     <div class="mb-2">
-                        <label for="company" id="companylabel" style="margin-bottom: 5px;font-size: 14px;color:#8c90ae;">Your Company</label>
-                        <select id="company" name="email" style="padding: 10px;" required>
-                            <option value="">Company</option>
-                            <?php
-                                $select_query="select * from companies";
-                                $select_query_res=mysqli_query($conn,$select_query);
-                                if (mysqli_num_rows($select_query_res) > 0) {
-                                    while ($row = $select_query_res->fetch_assoc()) {
-                                        echo '<option value="' . $row["id"] . '">' . $row["company_name"] . '</option>';
-                                    }
-                                }
-                            ?>
-                        </select>
+                        <label for="email" id="emailLabel" style="margin-bottom: 5px;font-size: 14px;color:#8c90ae;">Email</label>
+                        <input class="w-100" type="email" id="email" name="email" required></input>
                     </div>
                     <div class="mb-4">
                         <label for="password" id="passwordlabel" style="margin-bottom: 5px;font-size: 14px;color:#8c90ae;">Password</label>
-                        <input class="w-100" type="text" id="password" name="password" required></input>
+                        <input class="w-100" type="password" id="password" name="password" required></input>
                     </div>
                     
                     <?php
