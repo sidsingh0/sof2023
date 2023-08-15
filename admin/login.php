@@ -119,6 +119,10 @@
 <body style="background: url('assets/img/bg.png');background-position: center;background-size: cover;">
     
     <div style="height:100vh;width:100vw;position: relative;">
+        <div class="" style="position:absolute;z-index:1000000;top:60px;left:60px;">
+            <img src="../assets/img/sof.jpeg" height="40" style="border-left: none;padding-left: 0;" class="rotate-center apsitlogo pr-3" alt="" srcset="">
+            <img src="../assets/img/nhss.jpeg" height="40" class="apsitlogo pl-3" style="border-left: 1px solid hsl(274 64% 48% / 1);" alt="" srcset="">
+        </div>
         <div class="mainlogindiv">
                 <h1 style="color:#302a68;font-weight: 500;">Sign In</h1>
                 <form class="mt-4" action="login.php" method="POST">
@@ -138,7 +142,7 @@
                     ?>
                     <button type="submit" class="btn w-100" style="background-color: hsl(272 74% 93% / 1);color:hsl(274 64% 48% / 1);font-size: 12px;">SIGN IN</button>
                 </form>
-                <div class="mb-5"></div>
+                <div class="mb-1"></div>
         </div>
     </div>
 

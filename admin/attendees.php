@@ -72,7 +72,7 @@ $redirectUrl = $url . "/admin/login.php";
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid mt-md-4">
+                <div class="container-fluid mt-md-4 slide-in-blurred-bottom">
 
                     <div class="card mb-4">
                         <div class="card-header py-3 d-flex" style="border-bottom:1.5px solid #eadbf6;align-items:center;justify-content:space-between ">
@@ -81,7 +81,7 @@ $redirectUrl = $url . "/admin/login.php";
                                 <p class="m-0 font-weight-light" style="color:#8c90ae;">All the attendees who have not been alloted companies and rejected candidates are listed below.</p>
                             </div>
                             <div class="d-flex" style="flex-direction:column;align-items:center;">
-                                <p style="color:#9A53D2;font-size:30px;margin:0;cursor:pointer;" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-question-circle"></i></p>
+                                <p style="color:#9A53D2;font-size:30px;margin:0;cursor:pointer;" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-question-circle rotate-center" style="animation-delay: 0.5s;"></i></p>
                                 <p class="text-xs m-0" style="color:#8c90ae;translate:0 -5px;">Companies</p>
                             </div>
                             
