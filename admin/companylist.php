@@ -162,7 +162,75 @@ include("./partial.php");
 
             </div>
             <!-- End of Main Content -->
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="">
+                                <h3 class="m-0 font-weight-medium" style="color:#302a68;">Companies</h3>
+                                <p class="m-0 font-weight-light" style="color:#8c90ae;">Below is a list of companies according to their interested fields.</p>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
 
+                            <?php
+                                $tips_list=["Computer Science","Information Technology","Electronics and Telecommunications","Electrical","Mechanical","Civil","Diploma","Commerce","Pharma","BSC Computer Science","BSC Information Technology","12th HSC"];
+                                foreach($tips_list as $item){
+                                    $escaped_item = mysqli_real_escape_string($conn, strtolower($item));
+                                    $tips_company = "SELECT * FROM companies WHERE lower(categories) LIKE '%" . $escaped_item . "%'";
+                                    $tips_company_res=mysqli_query($conn,$tips_company);
+                                    if (mysqli_num_rows($tips_company_res)>0){
+                                        echo '
+                                            <div class="mb-3" style="display:grid;grid-template-columns:auto 1fr;gap:7px;">
+                                                <p style="color:#302a68;margin:0;padding:0.375rem 0.75rem;">'.$item.'</p>
+                                            <div class="d-flex" style="gap:7px;flex-wrap:wrap">
+                                        ';
+                                        while ($tip = $tips_company_res->fetch_assoc()) {
+                                            echo '<p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">'.$tip["company_name"].'</p>';
+                                        }
+                                        echo '
+                                                </div>
+                                            </div>
+                                        ';
+                                    }                                    
+                                    
+                                }
+
+                            ?>
+                            <!-- <div class="mb-3" style="display:grid;grid-template-columns:auto 1fr;gap:7px;">
+                                <p style="color:#302a68;margin:0;padding:0.375rem 0.75rem;">Electrical Engineering:</p>
+                                <div class="d-flex" style="gap:7px;flex-wrap:wrap">
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Wipro</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">TCS</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Infosys</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                </div>
+                            </div>
+                            <div class="" style="display:grid;grid-template-columns:auto 1fr;gap:7px;">
+                                <p style="color:#302a68;margin:0;padding:0.375rem 0.75rem;">Electrical Engineering:</p>
+                                <div class="d-flex" style="gap:7px;flex-wrap:wrap">
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Wipro</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">TCS</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Infosys</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                    <p class="btn" style="background-color:#F5EEFB;margin:0;color:#9A53D2;">Tech Mahindra</p>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" style="background-color:#fee5dd;color:#e55d34;" data-dismiss="modal">Close</button>
+                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Footer -->
             <footer class="sticky-footer">
                 <div class="container my-auto">
