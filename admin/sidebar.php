@@ -8,16 +8,12 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item mt-2">
-    <a class="nav-link d-flex flex-column p-0 mb-0">
+    <a class="nav-link d-flex flex-column mb-0 text-center" style="background-color:#f5eefb;padding: 0.75rem 1.5rem!important;border-radius: 4px;">
         <!-- <i class="fas fa-fw fa-cog"></i> -->
-        <div class="" style="background-color:#f5eefb;padding: 0.75rem 1.5rem;border-radius: 4px;">
-            <span style="font-weight: 500;font-size: 18px;color:#302a68;display: block;">Manage JOBFAIR</span>
-            <?php if (isset($_COOKIE["username"])){
+        <span style="font-weight: 500;font-size: 18px;color:#302a68;display: block;">Manage JOBFAIR</span>
+        <?php if (isset($_COOKIE["username"])){
                 echo '<a href="logout.php" style="font-weight: 300;color:#a8acc2">Logout</a>';
-            } ?>
-            
-        
-        </div>
+        } ?>
         
     </a>
 </li>
