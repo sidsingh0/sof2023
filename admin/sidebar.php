@@ -30,8 +30,8 @@
         <span>Dashboard</span>
     </a>
 </li>
-<hr class="sidebar-divider my-2">
-<li class="nav-item mt-4">
+<hr class="sidebar-divider my-3">
+<li class="nav-item">
     <a href="index.php" class="nav-link">
         <i class="fas fa-fw fa-list"></i>
         <span>Take Attendance</span>
@@ -49,6 +49,7 @@
         <span>In Interview</span>
     </a>
 </li>
+<hr class="sidebar-divider my-3">
 <li class="nav-item">
     <a href="top.php" class="nav-link">
     <i class="fas fa-fw fa-star"></i>
@@ -61,12 +62,13 @@
         <span>View companies</span>
     </a>
 </li>
-<li class="nav-item mb-4">
+<li class="nav-item">
     <a href="marks.php" class="nav-link">
     <i class="fas fa-fw fa-pen"></i>
         <span>Update Apti Marks</span>
     </a>
 </li>
+<hr class="sidebar-divider my-3">
 
 <!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">
