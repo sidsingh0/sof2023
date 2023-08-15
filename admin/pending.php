@@ -15,7 +15,7 @@ include("./partial.php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Pending Students</title>
+    <title>Admin - Ongoing Interview</title>
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -62,8 +62,8 @@ include("./partial.php");
                     <div class="card mb-4">
                         <div class="card-header py-3 d-flex" style="border-bottom:1.5px solid #eadbf6;align-items:center;justify-content:space-between ">
                             <div class="">
-                                <h3 class="m-0 font-weight-medium" style="color:#302a68;">Pending Candidates</h3>
-                                <p class="m-0 font-weight-light" style="color:#8c90ae;">All the candidates who have been alloted companies and are yet to enter the interview round.</p>
+                                <h3 class="m-0 font-weight-medium" style="color:#302a68;">Ongoing Interview</h3>
+                                <p class="m-0 font-weight-light" style="color:#8c90ae;">All the candidates who have been alloted companies and are ready to enter the interview round.</p>
                             </div>
                             
                         </div>
@@ -93,7 +93,7 @@ include("./partial.php");
                                             echo "<tr>
                                                     <td>" . $i . "</td>
                                                     <td>" . $res['first_name'] . " " . $res['last_name'] . "</td>
-                                                    <td>" . $res['phone'] . "</td>
+                                                    <td>" . $res['student_id'] . "</td>
                                                     <td>" . $res['apti_marks'] . "</td>
                                                     <td>" . $res['field'] . "</td>
                                                     <td>".$res['company_name']."</td>

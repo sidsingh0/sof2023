@@ -39,7 +39,7 @@
 <li class="nav-item">
     <a href="pending.php" class="nav-link">
     <i class="fas fa-fw fa-hourglass-half"></i>
-        <span>Pending Candidates</span>
+        <span>In Interview</span>
     </a>
 </li>
 <li class="nav-item">

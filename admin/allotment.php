@@ -16,9 +16,23 @@
             echo '{"status":0,"error":"Company has already been allotted to this student before."}';
             exit();
         }
-    
-        $query = "insert into allotments (student_id,company_id) VALUES ('$student_id','$company_id')";
-        $res = mysqli_query($conn, $query);
+
+        $check = "select * from allotments where student_id=$student_id ORDER BY timestamp DESC";
+        $check_res = mysqli_query($conn,$check);
+        if(mysqli_num_rows($check_res) > 0){
+            $r = $check_res->fetch_assoc();
+            if($r["status"] == "pending"){
+                echo '{"status":0,"error":"Already Interviewing"}';
+                exit();
+            }else{
+                $query = "insert into allotments (student_id,company_id) VALUES ('$student_id','$company_id')";
+                $res = mysqli_query($conn, $query);
+            }
+        }else{
+            $query = "insert into allotments (student_id,company_id) VALUES ('$student_id','$company_id')";
+            $res = mysqli_query($conn, $query);
+        }    
+        
 
         if(!$res){
             echo '{"status":0,"error":"Database error (insert)."}';
