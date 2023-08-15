@@ -7,7 +7,6 @@ $redirectUrl = $url . "/admin/login.php";
 //     header("Location: " . $redirectUrl);
 //     exit();
 //   }
-$_GET["company_id"]=3;
 if (isset($_GET["company_id"])){
     $id=$_GET["company_id"];
     $query="select * from companies where id=$id";
@@ -31,7 +30,7 @@ if (isset($_GET["company_id"])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Admin - View Company</title>
 
     <!-- Custom fonts for this template-->
     <link href="./assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

@@ -188,18 +188,19 @@
       $("#responseerror").html("");
       const inputphone = document.getElementById("inputphone").value;
       const inputdate = document.getElementById("inputdate").value;
-      let url = `/sof2023/getscores.php?phone=${inputphone}&dob=${inputdate}`
+      let url = `/sof_new/sof2023/getscores.php?phone=${inputphone}&dob=${inputdate}`
 
       $.ajax({
         type: "GET",
         url: url,
         success: function(data) {
           data = JSON.parse(data)
+          console.log(data)
           if (data.status == 0) {
             $("#responseerror").html(data.message);
           } else {
             let attended = "";
-            if (data.attendance != 0) {
+            if (data.attendance != 1) {
               attended = "<span style='font-weight:500;color:#e03a3c'>ABSENT</span>"
             } else {
               attended = "<span style='font-weight:500;color:#4ce038'>PRESENT</span>"

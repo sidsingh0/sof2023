@@ -15,7 +15,7 @@ include("./partial.php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Ongoing Interview</title>
+    <title>Admin - Placed Candidates</title>
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -62,8 +62,8 @@ include("./partial.php");
                     <div class="card mb-4">
                         <div class="card-header py-3 d-flex" style="border-bottom:1.5px solid #eadbf6;align-items:center;justify-content:space-between ">
                             <div class="">
-                                <h3 class="m-0 font-weight-medium" style="color:#302a68;">Ongoing Interview</h3>
-                                <p class="m-0 font-weight-light" style="color:#8c90ae;">All the candidates who have been alloted companies and are ready to enter the interview round.</p>
+                                <h3 class="m-0 font-weight-medium" style="color:#302a68;">Placed Candidates</h3>
+                                <p class="m-0 font-weight-light" style="color:#8c90ae;">All the candidates who have been placed to their respective companies.</p>
                             </div>
                             
                         </div>
@@ -77,13 +77,12 @@ include("./partial.php");
                                             <th>Phone</th>
                                             <th>Aptitude</th>
                                             <th>Field</th>
-                                            <th>Company Alloted</th>
-                                            <th>Action</th>
+                                            <th>Company Placed In</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $q = "select * from allotments a JOIN students s ON a.student_id=s.phone JOIN companies c ON a.company_id=c.id where a.status='pending';";
+                                        $q = "select * from allotments a JOIN students s ON a.student_id=s.phone JOIN companies c ON a.company_id=c.id where a.status='placed'";
                                         $r = mysqli_query($conn, $q);
                                         $i = 1;
 
@@ -98,9 +97,6 @@ include("./partial.php");
                                                     <td>" . $res['apti_marks'] . "</td>
                                                     <td>" . $res['field'] . "</td>
                                                     <td>".$res['company_name']."</td>
-                                                    <td><button stud='".$res['student_id']."' value='".$res['company_id']."' onclick='test(this)' style='background-color: #fee5dd!important;border: none;' class='btn btn-success btn-icon-split ml-sm-0 w-100'>
-                                                    <span class='text' style='color: #e55d34;font-weight: 400;'><i class='fas fa-times' style='margin-right: 5px;'></i>Cancel</span>
-                                                </button></td>
                                                 </tr>";
                                             $i++;
                                         }
@@ -168,21 +164,6 @@ include("./partial.php");
         $("#dataTable").DataTable({
             responsive: true
         });
-
-        function test(element){
-        let swsw = element.value;
-        let wsws = $(element).attr("stud");
-        $.ajax({
-          type: "POST",
-          url: "changeentry.php",
-          data: {"company_id": swsw, "student_id": wsws},
-          success: function(data){
-            if(data == 1){
-                location.reload();
-            }
-          }
-        });
-      }
 
     </script>
 
