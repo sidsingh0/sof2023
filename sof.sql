@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 02:04 PM
+-- Generation Time: Aug 15, 2023 at 10:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -32,7 +32,7 @@ CREATE TABLE `allotments` (
   `student_id` varchar(100) NOT NULL,
   `company_id` int(11) NOT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'pending',
-  `timestamp` date NOT NULL DEFAULT current_timestamp()
+  `timestamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `allotments` (
 --
 
 INSERT INTO `allotments` (`id`, `student_id`, `company_id`, `status`, `timestamp`) VALUES
-(1, '9372642011', 3, 'pending', '2023-08-13');
+(6, '9372642011', 3, 'placed', '2023-08-15 13:56:38');
 
 -- --------------------------------------------------------
 
@@ -69,8 +69,8 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `company_name`, `hr_name`, `phone`, `email`, `job_location`, `position_count`, `average_ctc`, `maximum_ctc`, `job_brief`, `selection_brief`, `categories`, `password`) VALUES
-(3, 'Grune designs ', 'Yoshita', '2147483647', 'yoshita.chitnis@grunedesigns.com', 'Thane, Mumbai Pune ', 4, 600000, 900000, 'Electrical Technician, Draftsman, Fire Fighting, Plumbing, HVAC, Mechanical Engineering ', 'FACE TO FACE INTERVIEW, ', 'Electrical,Mechanical,', ''),
-(4, 'TCS', 'Harmit', '9372642011', 'sidsinghcs@gmail.com', 'Thane', 2, 32, 32, '32', '32', 'Information Technology,', '');
+(3, 'Grune designs ', 'Yoshita', '2147483647', 'yoshita.chitnis@grunedesigns.com', 'Thane, Mumbai Pune ', 4, 600000, 900000, 'Electrical Technician, Draftsman, Fire Fighting, Plumbing, HVAC, Mechanical Engineering ', 'FACE TO FACE INTERVIEW, ', 'Electrical,Mechanical,', 'h234@'),
+(4, 'TCS', 'Harmit', '9372642011', 'sidsinghcs@gmail.com', 'Thane', 2, 32, 32, '32', '32', 'Information Technology,', 'abc443#');
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE `students` (
   `id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
-  `phone` bigint(15) NOT NULL,
+  `phone` varchar(50) NOT NULL,
   `email` varchar(500) NOT NULL,
   `college` varchar(250) NOT NULL,
   `category` varchar(100) NOT NULL,
@@ -103,9 +103,9 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `first_name`, `last_name`, `phone`, `email`, `college`, `category`, `field`, `tenth_marks`, `twelfth_marks`, `degree_marks`, `year_of_passing`, `path`, `dob`, `attended`, `top`, `apti_marks`) VALUES
-(11, 'Siddharth', 'Singh', 9372642010, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', '12th HSC', '12th HSC', 99, 99, 10, 2, 'uploads/9372642010.pdf', '2000-09-07', 0, 0, 58),
-(9, 'Siddharth', 'Singh', 9372642011, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 95, 95, 95, 2002, 'uploads/9372642011.pdf', '2023-08-19', 1, 1, 4),
-(10, 'Siddharth', 'Singh', 9372642014, 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 12, 12, 0, 12, 'uploads/9372642014.pdf', '2023-08-25', 0, 1, 0);
+(11, 'Siddharth', 'Singh', '9372642011', 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', '12th HSC', '12th HSC', 99, 99, 10, 2, 'uploads/9372642010.pdf', '2000-09-07', 1, 0, 57),
+(9, 'Siddharth', 'Singh', '9372642012', 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 95, 95, 95, 2002, 'uploads/9372642011.pdf', '2023-08-19', 1, 1, 4),
+(10, 'Siddharth', 'Singh', '9372642013', 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 12, 12, 0, 12, 'uploads/9372642014.pdf', '2023-08-25', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `allotments`
 --
 ALTER TABLE `allotments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `companies`
