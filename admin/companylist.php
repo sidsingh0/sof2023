@@ -210,52 +210,6 @@ include("./partial.php");
         $("#dataTable").DataTable({
             responsive: true
         });
-        $(document).ready(function() {
-            $('select').selectize({
-                sortField: 'text'
-            });
-        });
-
-        function btneanbler(element, btnid) {
-            if (element.value != '') {
-                let userbutton = document.getElementById(btnid)
-                userbutton.disabled = false;
-                $(userbutton).animate({
-                    backgroundColor: "#39b16d",
-                    color: "#fff"
-                }, 500);
-                userbutton.setAttribute("value", element.value)
-
-            }
-        }
-
-        function allot(element) {
-
-            $.ajax({
-                type: "POST",
-                url: "allotment.php",
-                data: {
-                    "company_id": element.value,
-                    "student_id": element.id,
-                },
-                success: function(data) {
-                    data = JSON.parse(data)
-                    console.log(data);
-                    if (data.status == 1) {
-                        location.reload();
-                    } else {
-                        document.getElementById("errorbox").innerHTML = `
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Something went wrong!</strong> ` + data.error + `
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>`;
-                    }
-                }
-            });
-
-        }
 
     </script>
 

@@ -278,7 +278,7 @@ $redirectUrl = $url . "/admin/login.php";
             responsive: true
         });
         $(document).ready(function() {
-            $('select').selectize({
+            $('#select-state').selectize({
                 sortField: 'text'
             });
         });
