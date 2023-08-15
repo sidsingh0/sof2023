@@ -144,7 +144,7 @@
                                         ?>
                                         <div class="mb-3">
                                             <p class="m-0 font-weight-light text-xs" style="color:#8c90ae;">Age</p>
-                                            <p style="color: #302a68;"><?php echo $diff; ?> Years</p>
+                                            <p style="color: #302a68;"><?php echo $diff; ?> Years (<?php echo $dob; ?>)</p>
                                         </div>
                                     </div>
 

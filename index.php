@@ -711,7 +711,66 @@
 
       </div>
     </section> -->
+    <section id="about" class="about section-bg">
 
+<div class="container" data-aos="fade-up" data-aos-delay="100">
+  <div class="row align-items-xl-center gy-5">
+
+    <div class="col-xl-5 content">
+      <h3 style="margin-bottom: 8px;">About Us</h3>
+      <p style="font-family: 'Poppins';margin-bottom: 5px;">Siddharth Ovalekar Foundation (SOF) is organizing Job Fair 2023 in collaboration with New Horizon Institute of Technology & Management (NHITM). Over 50 companies will be participating in the event, recruiting students from a diverse range of fields.
+      </p>
+      <p style="font-family: 'Poppins';margin-bottom: 30px;">Register today to seize exciting opportunities!</p>
+      <div class="d-flex myherobuttons myherobuttons2 mt-0" style="align-items: center;">
+        <!-- <p class="m-0">Are you:</p> -->
+        <a href="/student-register.php" class="myherocontactbutton d-flex" style="align-items: center;background-color: #e03a3c;"><span>Students</span> <i class="bx bx-chevron-right" style="font-size: 20px;"></i></a>
+        <a href="/company-register.php" class="myherocontactbutton d-flex" style="align-items: center;"><span>Company</span> <i class="bx bx-chevron-right" style="font-size: 20px;"></i></a>
+      </div>
+    </div>
+
+    <div class="col-xl-7">
+      <div class="row gy-4 icon-boxes">
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon-box">
+            <i class="bx bx-calendar-event" style="margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom:5px">Date</h3>
+            <p style="font-family: 'Poppins';">The event will be held on 26th of August 2023 at 11:00 a.m.</p>
+            <p style="color:transparent;">.</p>
+          </div>
+        </div> <!-- End Icon Box -->
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon-box">
+            <i class="bx bx-map" style="margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom:5px">Location</h3>
+            <a href="https://goo.gl/maps/D1vvP39WB4DBtdkJ6"><p style="font-family: 'Poppins';">New Horizon Institute of Technology & Management, Kavesar, Anand Nagar, Thane</p></a>
+          </div>
+        </div> <!-- End Icon Box -->
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon-box">
+            <i class="bx bx-timer" style="margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom:5px">Deadline</h3>
+            <p style="font-family: 'Poppins';">The registration will close on 21 August at 12:00 p.m. afternoon</p>
+          </div>
+        </div> <!-- End Icon Box -->
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="icon-box">
+            <i class="bx bx-book" style="margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom:5px">Eligibility</h3>
+            <p style="font-family: 'Poppins';">Anyone in class 12 can apply including Engineers and Non-engineers</p>
+          </div>
+        </div> <!-- End Icon Box -->
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</section>
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
