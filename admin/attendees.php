@@ -21,7 +21,7 @@ $redirectUrl = $url . "/admin/login.php";
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - All Students</title>
+    <title>Admin - Allot Candidates</title>
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -74,40 +74,6 @@ $redirectUrl = $url . "/admin/login.php";
                 <!-- Begin Page Content -->
                 <div class="container-fluid mt-md-4">
 
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-xs-12 py-1 py-md-2 py-lg-3">
-                            <div class="card " style="padding: 20px;background-color: #fff;">
-                                <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
-                                    <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Total </div>
-                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;"><?php echo $c1; ?><span style="font-size:16px"></span></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-xs-12 py-1 py-md-2 py-lg-3">
-                            <div class="card " style="padding: 20px;background-color: #fff;">
-                                <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
-                                    <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Attending </div>
-                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;"><?php echo $c2; ?><span style="font-size:16px"></span></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-xs-12 py-1 py-md-2 py-lg-3">
-                            <div class="card " style="padding: 20px;background-color: #fff;">
-                                <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
-                                    <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Top </div>
-                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;">91<span style="font-size:16px"></span></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-xs-12 py-1 py-md-2 py-lg-3">
-                            <div class="card " style="padding: 20px;background-color: #fff;">
-                                <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
-                                    <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Pending </div>
-                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;">50<span style="font-size:16px"></span></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="card mb-4">
                         <div class="card-header py-3 d-flex" style="border-bottom:1.5px solid #eadbf6;align-items:center;justify-content:space-between ">
                             <div class="">
@@ -136,7 +102,7 @@ $redirectUrl = $url . "/admin/login.php";
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $q = "select * from students where phone not in (select student_id from allotments) OR phone in (SELECT e.student_id from allotments e WHERE e.timestamp = (SELECT MAX(timestamp) FROM allotments WHERE student_id = e.student_id) and status='not placed');";
+                                        $q = "select * from students where attended=1 and phone not in (select student_id from allotments) OR phone in (SELECT e.student_id from allotments e WHERE e.timestamp = (SELECT MAX(timestamp) FROM allotments WHERE student_id = e.student_id) and status='not placed');";
                                         $r = mysqli_query($conn, $q);
                                         $i = 1;
 

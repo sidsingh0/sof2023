@@ -31,13 +31,13 @@
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link">
+    <a href="attendees.php" class="nav-link">
     <i class="fas fa-fw fa-user-tie"></i>
         <span>Allot Company</span>
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link">
+    <a href="pending.php" class="nav-link">
     <i class="fas fa-fw fa-hourglass-half"></i>
         <span>Pending Candidates</span>
     </a>

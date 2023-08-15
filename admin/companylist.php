@@ -1,12 +1,5 @@
 <?php
-include("../connect.php");
-$url = "/sof_new/sof2023";
-$redirectUrl = $url . "/admin/login.php";
-
-//   if(!(isset($_COOKIE["username"]))){
-//     header("Location: " . $redirectUrl);
-//     exit();
-//   }
+include("./partial.php");
 
 ?>
 
@@ -21,7 +14,7 @@ $redirectUrl = $url . "/admin/login.php";
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - All Students</title>
+    <title>Admin - All Companies</title>
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

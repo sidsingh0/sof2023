@@ -42,6 +42,7 @@
           $c1 = mysqli_query($conn, $q1)->fetch_assoc()["count"];
           $c2 = mysqli_query($conn, $q2)->fetch_assoc()["count"];
           $c3 = mysqli_query($conn, $q3)->fetch_assoc()["count"];
+          $c4 = mysqli_query($conn, $q4)->fetch_assoc()["count"];
         ?>
 
         <!-- Content Wrapper -->
@@ -76,7 +77,7 @@
                         <div class="col-lg-3 col-md-6 col-xs-12 py-1 py-md-2 py-lg-3">
                             <div class="card " style="padding: 20px;background-color: #fff;">
                                 <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
-                                    <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Attending </div>                                          
+                                    <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Present </div>                                          
                                     <h3 class="m-0 font-weight-medium" style="color: #302a68;"><?php echo $c2; ?><span style="font-size:16px"></span></h3>
                                 </div>
                             </div>
@@ -84,7 +85,7 @@
                         <div class="col-lg-3 col-md-6 col-xs-12 py-1 py-md-2 py-lg-3">
                             <div class="card " style="padding: 20px;background-color: #fff;">
                                 <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
-                                    <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Top </div>                                          
+                                    <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Prime </div>                                          
                                     <h3 class="m-0 font-weight-medium" style="color: #302a68;"><?php echo $c3; ?><span style="font-size:16px"></span></h3>
                                 </div>
                             </div>
@@ -93,7 +94,7 @@
                             <div class="card " style="padding: 20px;background-color: #fff;">
                                 <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
                                     <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Pending </div>                                          
-                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;">50<span style="font-size:16px"></span></h3>
+                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;"><?php echo $c4; ?><span style="font-size:16px"></span></h3>
                                 </div>
                             </div>
                         </div>
