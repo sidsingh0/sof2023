@@ -57,7 +57,7 @@ include("./partial.php");
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid mt-md-4">
+                <div class="container-fluid mt-md-4 slide-in-blurred-bottom">
 
                     <div class="card mb-4">
                         <div class="card-header py-3 d-flex" style="border-bottom:1.5px solid #eadbf6;align-items:center;justify-content:space-between ">

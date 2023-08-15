@@ -67,7 +67,7 @@ include("./partial.php");
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid mt-md-4">
+                <div class="container-fluid mt-md-4 slide-in-blurred-bottom">
 
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-xs-12 py-1 py-md-2 py-lg-3">

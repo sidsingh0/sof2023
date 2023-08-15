@@ -52,7 +52,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid mt-md-4">
+                <div class="container-fluid mt-md-4 slide-in-blurred-bottom">
                     <div class="card mb-4">
                         <div class="card-header py-3" style="border:1.5px solid #eadbf6; ">
                             <h3 class="m-0 font-weight-medium" style="color:#302a68;">Edit Prime Candidates</h3>
