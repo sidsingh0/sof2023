@@ -21,9 +21,16 @@
         
     </a>
 </li>
-<!-- <hr class="sidebar-divider my-2"> -->
+
 
 <!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item mt-4">
+    <a href="dashboard.php" class="nav-link">
+        <i class="fas fa-fw fa-chart-pie"></i>
+        <span>Dashboard</span>
+    </a>
+</li>
+<hr class="sidebar-divider my-2">
 <li class="nav-item mt-4">
     <a href="index.php" class="nav-link">
         <i class="fas fa-fw fa-list"></i>
