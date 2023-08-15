@@ -49,6 +49,12 @@
         <span>In Interview</span>
     </a>
 </li>
+<li class="nav-item">
+    <a href="placed.php" class="nav-link">
+    <i class="fas fa-fw fa-check"></i>
+        <span>Placed Candidates</span>
+    </a>
+</li>
 <hr class="sidebar-divider my-3">
 <li class="nav-item">
     <a href="top.php" class="nav-link">
