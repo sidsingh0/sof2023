@@ -174,7 +174,7 @@ include("./partial.php");
         let wsws = $(element).attr("stud");
         $.ajax({
           type: "POST",
-          url: "deleteallotment.php",
+          url: "changeentry.php",
           data: {"company_id": swsw, "student_id": wsws},
           success: function(data){
             if(data == 1){
