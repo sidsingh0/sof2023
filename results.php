@@ -108,10 +108,10 @@
         <p id="responseerror" class="mb-1" style="text-align: center;font-size:14px;color:#e03a3c;"></p>
         <div class="row align-items-center">
           <div class="col-lg-5 col-xs-12 p-1">
-            <input type="text" id="inputphone" name="Phone" placeholder="Phone number" maxlength="10" class="textbox form-control me-2" autocomplete="off" required />
+            <input type="text" id="inputphone" name="Phone" placeholder="Phone number" maxlength="10" class="textbox form-control me-2" required />
           </div>
           <div class="col-lg-5 col-xs-12 p-1">
-            <input type="date" id="inputdate" name="Date" placeholder="Date of birth" class="textbox form-control me-2" autocomplete="off" required />
+            <input type="date" id="inputdate" name="Date" placeholder="Date of birth" class="textbox form-control me-2" required />
           </div>
           <div class="col-lg-2 col-xs-12 p-1 text-center">
             <button type="button" class="" style="
