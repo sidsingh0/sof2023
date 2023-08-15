@@ -143,7 +143,7 @@
             <tbody id="companylist">
             </tbody>
           </table>
-
+          <p>NOTE: If any of the above details are wrong please contact the registration desk.</p>
         </div>
       </div>
     </section>
