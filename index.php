@@ -432,9 +432,9 @@
         </div>
       </div>
       <div class="social-links text-center text-md-end pt-3 pt-md-0">
-        <a href="https://www.facebook.com/profile.php?id=100081828978440&mibextid=ZbWKwL" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="https://instagram.com/ishrae_thane_chapter?igshid=MzRlODBiNWFlZA==" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/ishrae-thane-chapter/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://www.facebook.com/SiddharthDilipOvalekar?mibextid=ZbWKwL" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <!-- <a href="https://instagram.com/ishrae_thane_chapter?igshid=MzRlODBiNWFlZA==" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/ishrae-thane-chapter/" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
       </div>
     </div>
   </footer><!-- End Footer -->

@@ -88,24 +88,55 @@
     <main id="main">
       <section class="contact" style="min-height: 95vh; position: relative">
         <div
-          style="
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-          "
+          
           class="col-lg-8 col-sm-8 col-xs-8 resultbox container aos-init aos-animate php-email-form"
         >
-          <div class="section-title">
+          <div class="section-title mt-5">
             <h2>View Registrations</h2>
-            <p>
-            </p>
+            <h4 class="mt-5">Companies</h4>
           </div>
+            <?php 
+                $query1 = "select * from companies";
+                $result1 = mysqli_query($conn, $query1);
+            ?>
+            <table id="tableUser">
+                <thead>
+                <tr>
+                    <th scope="col">Company</th>
+                    <th scope="col">HR Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                </tr>
+                </thead>
+                
+                <tbody>
+                <?php while($res=$result1->fetch_assoc()){
+                    echo "<tr>
+                        <td>". $res['company_name']."</td>
+                        <td>". $res['hr_name']."</td>
+                        <td>". $res['phone'] ."</td>
+                        <td>". $res['email'] ."</td>
+                    </tr>";
+
+                }
+                ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+        <div
+          class="col-lg-8 col-sm-8 col-xs-8 resultbox container aos-init aos-animate php-email-form"
+        >
+        <div class="section-title">
+            <h4 class="mt-5">Students</h4>
+          </div>                
             <?php 
                 $query = "select * from students";
                 $result = mysqli_query($conn, $query);
             ?>
-            <table id="tableUser">
+            <table id="tableUser1">
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -177,6 +208,11 @@
     <script>
       $(document).ready(function() {
         $("#tableUser").DataTable({
+            responsive: true
+        });
+      });
+      $(document).ready(function() {
+        $("#tableUser1").DataTable({
             responsive: true
         });
       });
