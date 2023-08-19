@@ -50,7 +50,7 @@ include("./partial.php");
             <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid mt-md-4">
+                <div class="container-fluid mt-md-4 ">
 
                     <!-- Content Row -->
                     <div class="row">
@@ -63,6 +63,7 @@ include("./partial.php");
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Category Wise Company</h6>
+                                    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">

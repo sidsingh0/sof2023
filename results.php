@@ -188,7 +188,7 @@
       $("#responseerror").html("");
       const inputphone = document.getElementById("inputphone").value;
       const inputdate = document.getElementById("inputdate").value;
-      let url = `/sof_new/sof2023/getscores.php?phone=${inputphone}&dob=${inputdate}`
+      let url = `/sof2023/getscores.php?phone=${inputphone}&dob=${inputdate}`
 
       $.ajax({
         type: "GET",

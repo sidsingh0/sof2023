@@ -1,7 +1,7 @@
 <?php
   session_start();
   include("../../connect.php");
-  $url = "/sof_new/sof2023";
+  $url = "/sof2023";
   $redirectUrl=$url."/admin/company";
 
   if(!(isset($_COOKIE["company"]))){
