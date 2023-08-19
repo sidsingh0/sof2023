@@ -11,9 +11,8 @@
     <a class="nav-link d-flex flex-column mb-0 text-center" style="background-color:#f5eefb;padding: 0.75rem 1.5rem!important;border-radius: 4px;">
         <!-- <i class="fas fa-fw fa-cog"></i> -->
         <span style="font-weight: 500;font-size: 18px;color:#302a68;display: block;">Manage JOBFAIR</span>
-        <?php if (isset($_COOKIE["username"])){
-                echo '<a href="logout.php" style="font-weight: 300;color:#a8acc2">Logout</a>';
-        } ?>
+        <span onclick="location.href = 'logout.php';" style="cursor:pointer;font-weight: 300;color:#a8acc2;margin-top:5px;">Logout</span>
+
         
     </a>
 </li>

@@ -58,12 +58,11 @@ include("./partial.php");
 
 
                         <!-- Donut Chart -->
-                        <div class="col-xl-4 col-lg-5">
+                        <div class="col-xl-4 col-lg-5 slide-in-blurred-bottom">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Category Wise Company</h6>
-                                    
+                                    <p class="m-0 font-weight-medium" style="color:#302a68;">Category Wise Company</p>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -74,11 +73,11 @@ include("./partial.php");
                             </div>
                         </div>
 
-                        <div class="col-xl-4 col-lg-4">
+                        <div class="col-xl-4 col-lg-4 slide-in-blurred-bottom">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">No. of Students Placed</h6>
+                                    <p class="m-0 font-weight-medium" style="color:#302a68;">Students Placed</p>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -91,11 +90,11 @@ include("./partial.php");
                             </div>
                         </div>
 
-                        <div class="col-xl-4 col-lg-4">
+                        <div class="col-xl-4 col-lg-4 slide-in-blurred-bottom">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Category Wise Students</h6>
+                                    <p class="m-0 font-weight-medium" style="color:#302a68;">Category Wise Students</p>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -109,12 +108,12 @@ include("./partial.php");
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-8 col-lg-7 slide-in-blurred-bottom" style="animation-delay: 0.3s;">
 
                             <!-- Area Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Top 5 highest CTC offering companies</h6>
+                                    <p class="m-0 font-weight-medium" style="color:#302a68;">Top 5 highest CTC offering companies</p>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
@@ -141,11 +140,11 @@ include("./partial.php");
                             $r3 = number_format((float)$r3, 2, '.', '');
                         ?>
 
-                        <div class="col-xl-4 col-lg-4">
+                        <div class="col-xl-4 col-lg-4 slide-in-blurred-bottom" style="animation-delay: 0.3s;">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Some other valuable chart</h6>
+                                    <p class="m-0 font-weight-medium" style="color:#302a68;">More charts coming soon</p>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
