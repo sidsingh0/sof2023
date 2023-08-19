@@ -70,8 +70,13 @@
         <span>Update Apti Marks</span>
     </a>
 </li>
+<li class="nav-item">
+    <a href="view-data.php" class="nav-link">
+    <i class="fas fa-fw fa-download"></i>
+        <span>Download Excel</span>
+    </a>
+</li>
 <hr class="sidebar-divider my-3">
-
 <!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">
                 <button class="border-0" style="border-radius:4px;" id="sidebarToggle"></button>
