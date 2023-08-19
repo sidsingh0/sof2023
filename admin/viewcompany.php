@@ -140,11 +140,11 @@ if (isset($_GET["company_id"])){
                                     <div class="col-lg-6 col-xl-6">
                                         <div class="mb-3">
                                             <p class="m-0 font-weight-light text-xs" style="color:#8c90ae;">Maximum CTC</p>
-                                            <p style="color: #302a68;"><?php echo $query_res['maximum_ctc']; ?></p>
+                                            <p style="color: #302a68;"><span style="font-size:14px;">₹ </span><?php echo $query_res['maximum_ctc']; ?></p>
                                         </div>
                                         <div class="mb-3">
                                             <p class="m-0 font-weight-light text-xs" style="color:#8c90ae;">Average CTC</p>
-                                            <p style="color: #302a68;"><?php echo $query_res['average_ctc']; ?></p>
+                                            <p style="color: #302a68;"><span style="font-size:14px;">₹ </span><?php echo $query_res['average_ctc']; ?></p>
                                         </div>
                                         <div class="mb-3">
                                             <p class="m-0 font-weight-light text-xs" style="color:#8c90ae;">Position Count</p>

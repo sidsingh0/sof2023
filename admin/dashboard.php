@@ -144,16 +144,21 @@ include("./partial.php");
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <p class="m-0 font-weight-medium" style="color:#302a68;">More charts coming soon</p>
+                                    <p class="m-0 font-weight-medium" style="color:#302a68;">Average CTC being offered</p>
                                 </div>
                                 <!-- Card Body -->
+                                <?php 
+                                    $avgsalary = "select avg(average_ctc) as count from companies";
+                                    $avgsalary_res = intval(mysqli_query($conn, $avgsalary)->fetch_assoc()["count"]);
+                                ?>
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4">
-                                        <canvas id="myPieChart2"></canvas>
+                                    <div class="p-0 m-0">
+                                        <h3 class="m-0 font-weight-medium" style="color: #302a68;"><span style="font-size:20px;">₹ </span><?php echo $avgsalary_res; ?><span style="font-size:16px"></span></h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
 
 
                     </div>

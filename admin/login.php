@@ -71,10 +71,17 @@
             outline: 0!important;
             box-shadow: none!important;
         }
-        #password:focus{
-            border: 2px solid hsl(274 64% 48% / 1)!important;
+        #email:focus{
+            border: 2px solid hsl(274 64% 48% / 0.4)!important;
             outline: 0!important;
-            box-shadow: none!important;
+            /* box-shadow: none!important; */
+            box-shadow: 0 4px 6px hsl(274 64% 48% / 0.1), 0 5px 15px hsl(274 64% 48% / 0.1);
+        }
+        #password:focus{
+            border: 2px solid hsl(274 64% 48% / 0.4)!important;
+            outline: 0!important;
+            /* box-shadow: none!important; */
+            box-shadow: 0 4px 6px hsl(274 64% 48% / 0.1), 0 5px 15px hsl(274 64% 48% / 0.1);
         }
         .btn{
             padding: 15px!important;
@@ -118,19 +125,19 @@
 
 <body style="background: url('assets/img/bg.png');background-position: center;background-size: cover;">
     
-    <div style="height:100vh;width:100vw;position: relative;">
-        <div class="" style="position:absolute;z-index:1000000;top:60px;left:60px;">
+    <div class="slide-in-blurred-left" style="height:100vh;width:100vw;position: relative;">
+        <div class="fade-in" style="position:absolute;z-index:1000000;top:60px;left:60px;animation-delay:0.5s;">
             <img src="../assets/img/sof.jpeg" height="40" style="border-left: none;padding-left: 0;" class="rotate-center apsitlogo pr-3" alt="" srcset="">
             <img src="../assets/img/nhss.jpeg" height="40" class="apsitlogo pl-3" style="border-left: 1px solid hsl(274 64% 48% / 1);" alt="" srcset="">
         </div>
         <div class="mainlogindiv">
-                <h1 style="color:#302a68;font-weight: 500;">Sign In</h1>
-                <form class="mt-4" action="login.php" method="POST">
-                    <div class="mb-2">
+                <h1 style="color:#302a68;font-weight: 500;animation-delay:0.7s;" class="fade-in">Sign In</h1>
+                <form class="mt-2" action="login.php" method="POST">
+                    <div class="mb-2 fade-in" style="animation-delay:0.9s;">
                         <label for="email" id="emailLabel" style="margin-bottom: 5px;font-size: 14px;color:#8c90ae;">Email</label>
                         <input class="w-100" type="email" id="email" name="email" required></input>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-4 fade-in" style="animation-delay:0.9s;">
                         <label for="password" id="passwordlabel" style="margin-bottom: 5px;font-size: 14px;color:#8c90ae;">Password</label>
                         <input class="w-100" type="password" id="password" name="password" required></input>
                     </div>
@@ -140,7 +147,7 @@
                             echo '<p style="font-size:14px;color:#F87E55">'.$message.'</p>';
                         }
                     ?>
-                    <button type="submit" class="btn w-100" style="background-color: hsl(272 74% 93% / 1);color:hsl(274 64% 48% / 1);font-size: 12px;">SIGN IN</button>
+                    <button type="submit" class="btn w-100 fade-in" style="animation-delay:1.1s;background-color: hsl(272 74% 93% / 1);color:hsl(274 64% 48% / 1);font-size: 12px;">SIGN IN</button>
                 </form>
                 <div class="mb-1"></div>
         </div>

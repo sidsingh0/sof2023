@@ -90,7 +90,7 @@ include("./partial.php");
                             <div class="card " style="padding: 20px;background-color: #fff;">
                                 <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
                                     <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Maximum CTC</div>
-                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;"><?php echo $c3; ?><span style="font-size:16px"></span></h3>
+                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;"><span style="font-size:20px;">₹ </span><?php echo $c3; ?><span style="font-size:16px"></span></h3>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@ include("./partial.php");
                             <div class="card " style="padding: 20px;background-color: #fff;">
                                 <div class="col mr-2 d-flex h-100" style="flex-direction: column;justify-content:end!important;">
                                     <div class="text-xs mycardsubtitle font-weight-light text-uppercase mb-1" style="color:#8c90ae">Average CTC</div>
-                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;"><?php echo $c4; ?><span style="font-size:16px"></span></h3>
+                                    <h3 class="m-0 font-weight-medium" style="color: #302a68;"><span style="font-size:20px;">₹ </span><?php echo $c4; ?><span style="font-size:16px"></span></h3>
                                 </div>
                             </div>
                         </div>
