@@ -64,7 +64,7 @@ if (isset($_POST["name"])) {
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  <link href="admin/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -113,6 +113,56 @@ if (isset($_POST["name"])) {
         </div>
       </div>
     </section>
+
+    
+
+    <section class="register">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2 style="text-transform: none;color:#1a2533;font-size: 40px;">Company View</h2>
+        </div>
+        <div class="eligibilitycontentcontainer registercontainerreducer">
+            <table id="comp" width="100%">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Company Name</th>
+                    <th>About</th>
+                    <th>No.of Req</th>
+                    <th>Eligibility</th>
+                    <th>CTC</th>
+                    <th>Logo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $q = "select * from trash;";
+                $r = mysqli_query($conn, $q);
+                $i = 1;
+
+
+
+                while ($res = $r->fetch_assoc()) {
+
+                    echo "<tr>
+                            <td>" . $i . "</td>
+                            <td><a style='color:#9A53D2;' href='#'>" . $res['name'] . "</a></td>
+                            <td>" . substr($res['about'], 0, 39) . "...</td>
+                            <td>" . $res['requirement'] . "</td>
+                            <td>" . substr($res['eligibility'], 0, 39). "...</td>
+                            <td>" . $res['ctc'] . "</td>
+                            <td><img src='" . $res['photo'] . "' width='91px'></td>
+                        </tr>";
+                    $i++;
+                }
+
+
+                ?>
+            </tbody>
+            </table>
+        </div>
+      </div>
+    </section>
   </main>
 
 
@@ -129,6 +179,16 @@ if (isset($_POST["name"])) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+    <script src="admin/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="admin/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $("#dataTable").DataTable({
+            responsive: true
+        });
+
+    </script>
 
 
 </html>
