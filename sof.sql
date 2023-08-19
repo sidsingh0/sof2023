@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2023 at 10:34 AM
+-- Generation Time: Aug 19, 2023 at 09:38 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,7 +40,9 @@ CREATE TABLE `allotments` (
 --
 
 INSERT INTO `allotments` (`id`, `student_id`, `company_id`, `status`, `timestamp`) VALUES
-(6, '9372642011', 3, 'placed', '2023-08-15 13:56:38');
+(6, '9372642011', 3, 'placed', '2023-08-15 13:56:38'),
+(8, '9372642013', 5, 'placed', '2023-08-15 18:16:07'),
+(9, '9372642012', 5, 'not placed', '2023-08-15 18:40:49');
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,8 @@ CREATE TABLE `companies` (
 
 INSERT INTO `companies` (`id`, `company_name`, `hr_name`, `phone`, `email`, `job_location`, `position_count`, `average_ctc`, `maximum_ctc`, `job_brief`, `selection_brief`, `categories`, `password`) VALUES
 (3, 'Grune designs ', 'Yoshita', '2147483647', 'yoshita.chitnis@grunedesigns.com', 'Thane, Mumbai Pune ', 4, 600000, 900000, 'Electrical Technician, Draftsman, Fire Fighting, Plumbing, HVAC, Mechanical Engineering ', 'FACE TO FACE INTERVIEW, ', 'Electrical,Mechanical,', 'h234@'),
-(4, 'TCS', 'Harmit', '9372642011', 'sidsinghcs@gmail.com', 'Thane', 2, 32, 32, '32', '32', 'Information Technology,', 'abc443#');
+(4, 'TCS', 'Harmit', '9372642011', 'sidsinghcs@gmail.com', 'Thane', 2, 200000, 320000, '32', '32', 'Information Technology,', 'abc443#'),
+(5, 'Tech Mahindra', 'Siddharth SIngh', '9999999999', 'sidsinghcs@gmail.com', 'Thane', 1, 450000, 600000, 'Software dev', 'Walk in', 'Information Technology,', '##awd');
 
 -- --------------------------------------------------------
 
@@ -103,9 +106,32 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `first_name`, `last_name`, `phone`, `email`, `college`, `category`, `field`, `tenth_marks`, `twelfth_marks`, `degree_marks`, `year_of_passing`, `path`, `dob`, `attended`, `top`, `apti_marks`) VALUES
-(11, 'Siddharth', 'Singh', '9372642011', 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', '12th HSC', '12th HSC', 99, 99, 10, 2, 'uploads/9372642010.pdf', '2000-09-07', 1, 0, 57),
+(11, 'Siddharth', 'Singh', '9372642011', 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', '12th HSC', '12th HSC', 99, 99, 10, 2, 'uploads/9372642010.pdf', '2000-09-07', 1, 0, 2),
 (9, 'Siddharth', 'Singh', '9372642012', 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 95, 95, 95, 2002, 'uploads/9372642011.pdf', '2023-08-19', 1, 1, 4),
-(10, 'Siddharth', 'Singh', '9372642013', 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 12, 12, 0, 12, 'uploads/9372642014.pdf', '2023-08-25', 0, 1, 0);
+(10, 'Siddharth', 'Singh', '9372642013', 'sidsinghcs@gmail.com', 'A.P. Shah Institute of Technology', 'Engineering', 'Computer Science Engineering', 12, 12, 0, 12, 'uploads/9372642014.pdf', '2023-08-25', 1, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trash`
+--
+
+CREATE TABLE `trash` (
+  `id` int(11) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `requirement` varchar(500) NOT NULL,
+  `about` text NOT NULL,
+  `eligibility` text NOT NULL,
+  `ctc` varchar(50) NOT NULL,
+  `photo` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `trash`
+--
+
+INSERT INTO `trash` (`id`, `name`, `requirement`, `about`, `eligibility`, `ctc`, `photo`) VALUES
+(1, 'Test', '49', 'very nice company lorem ipsum dolor very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor ', 'must be 10th pass very nice company lorem ipsum dolor  very nice company lorem ipsum dolor very nice company lorem ipsum dolor  very nice company lorem ipsum dolor ', '456930', 'uploads/Test.jpg');
 
 -- --------------------------------------------------------
 
@@ -150,6 +176,12 @@ ALTER TABLE `students`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `trash`
+--
+ALTER TABLE `trash`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -164,19 +196,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `allotments`
 --
 ALTER TABLE `allotments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `trash`
+--
+ALTER TABLE `trash`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

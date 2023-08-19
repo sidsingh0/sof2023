@@ -29,12 +29,12 @@ try{
 			$schema_insert = str_replace("uploads/", "https://jobfair.siddharthovalekarfoundations.com/uploads/", $schema_insert);
 			$schema_insert = str_replace($sep."$", "", $schema_insert);
 			$schema_insert = str_replace(",", " ", $schema_insert);
-		$schema_insert = preg_replace("/\r\n|\n\r|\n|\r/", " ", $schema_insert);
+			$schema_insert = preg_replace("/\r\n|\n\r|\n|\r/", " ", $schema_insert);
         	$schema_insert .= "\t";
         	print(trim($schema_insert));
         	print "\n";
 		} 
-		header("Refresh: 1; url=/sof_new/sof2023/admin/view-data.php");
+		header("Refresh: 1; url=/sof2023/admin/view-data.php");
 	    }
 	    else{
 		    echo 'BLUE';
