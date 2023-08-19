@@ -6,6 +6,7 @@ if (isset($_POST["name"])) {
   $about = mysqli_real_escape_string($conn,$_POST["about"]);
   $eligibility = mysqli_real_escape_string($conn,$_POST["eligibility"]);
   $ctc = mysqli_real_escape_string($conn,$_POST["ctc"]);
+  $max = mysqli_real_escape_string($conn,$_POST["max"]);
 
   if (isset($_FILES["logo"])) {
     $targetDirectory = "uploads/"; // Change this to your desired directory
@@ -21,7 +22,7 @@ if (isset($_POST["name"])) {
     
     // Check if the file was successfully uploaded
     if (move_uploaded_file($_FILES["logo"]["tmp_name"], $targetFile)) {
-      $query = "insert into trash (name, requirement, about, eligibility, ctc, photo) values ('$company_name', '$requirement', '$about', '$eligibility', '$ctc', '$targetFile')";
+      $query = "insert into trash (name, requirement, about, eligibility, ctc, photo,max) values ('$company_name', '$requirement', '$about', '$eligibility', '$ctc', '$targetFile', '$max')";
       $res = mysqli_query($conn, $query);
       if(!$res){
         echo mysqli_error($conn);
@@ -102,6 +103,10 @@ if (isset($_POST["name"])) {
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="regopencount">CTC</label>
                 <input type="number" class="form-control" name="ctc" id="regopencount" placeholder="" required>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+                <label for="regmax">Max</label>
+                <input type="number" class="form-control" name="max" id="regmax" placeholder="" required>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="regfile">Upload Logo</label>

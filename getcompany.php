@@ -1,89 +1,15 @@
 <?php include("./connect.php");
 
-if (isset($_POST["regname1"])) {
-  $first_name = $_POST["regname1"];
-  $last_name = $_POST["regname2"];
-  $phone = $_POST["regphone"];
-  $email = $_POST["regemail"];
-  $college = $_POST["regcollege"];
-  $category = $_POST["regcategory"];
-  $field = $_POST["regfield"];
-  $tenthmarks = $_POST["regtenthmarks"];
-  $diplomamarks = $_POST["regdiplomamarks"];
-  $degreemarks = $_POST["regdegreemarks"];
-  $yearofpassing = $_POST["regyearofpassing"];
-  $dob=$_POST["regdate"];
-
-  $phonequery="select * from students where phone = '$phone'";
-  $phonequery_res=mysqli_query($conn,$phonequery);
-  if(mysqli_num_rows($phonequery_res)>0){
-    echo "Error uploading file.";
-    $data = [
-      "success" => 0,
-      "message" => "Phone number is already registered."
-    ];
-    $jsonData = json_encode($data);
-    $encodedData = urlencode($jsonData);
-    $redirectUrl = "index.php?data=" . $encodedData;
-    header("Location: " . $redirectUrl);
-    exit();
+if (isset($_GET["companyid"])) {
+  $companyid=$_GET["companyid"];
+  $query="select * from trash where id=$companyid"; 
+  $res = mysqli_query($conn, $query);
+  if(!$res){
+    echo mysqli_error($conn);
+    exit;
   }
-
-  if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["regfile"])) {
-    $targetDirectory = "uploads/"; // Change this to your desired directory
-
-    // Get the original file name and extension
-    $originalFileName = $_FILES["regfile"]["name"];
-    $fileExtension = pathinfo($originalFileName, PATHINFO_EXTENSION);
-
-    // Generate a custom file name (you can use any method to generate a unique name)
-    $customFileName = $phone . "." . $fileExtension;
-
-    $targetFile = $targetDirectory . $customFileName;
-    
-    // Check if the file was successfully uploaded
-    if (move_uploaded_file($_FILES["regfile"]["tmp_name"], $targetFile)) {
-      echo "File uploaded successfully.";
-      $query = "insert into students (first_name, last_name, phone, email, college, category, field, tenth_marks, twelfth_marks, degree_marks, year_of_passing,path,dob) values ('$first_name', '$last_name', $phone, '$email', '$college', '$category', '$field', '$tenthmarks', '$diplomamarks', '$degreemarks', '$yearofpassing','$targetFile','$dob')";
-      $res = mysqli_query($conn, $query);
-    } else {
-      echo "Error uploading file.";
-      $data = [
-        "success" => 0,
-        "message" => "Please try again later."
-      ];
-      $jsonData = json_encode($data);
-      $encodedData = urlencode($jsonData);
-      $redirectUrl = "index.php?data=" . $encodedData;
-      header("Location: " . $redirectUrl);
-      exit();
-    }
-  }
-
-  
-  if ($res) {
-    $data = [
-      "success" => 1,
-      "message" => "Registration was successful."
-    ];
-    $jsonData = json_encode($data);
-    $encodedData = urlencode($jsonData); // Encode the data to be URL-safe
-    $redirectUrl = "index.php?data=" . $encodedData;
-    header("Location: " . $redirectUrl);
-    exit();
-  } else {
-    $data = [
-      "success" => 0,
-      "message" => "Please try again later."
-    ];
-    $jsonData = json_encode($data);
-    $encodedData = urlencode($jsonData);
-    $redirectUrl = "index.php?data=" . $encodedData;
-    header("Location: " . $redirectUrl);
-    exit();
-  }
+  $res=$res->fetch_assoc();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -171,8 +97,8 @@ if (isset($_POST["regname1"])) {
         </div> -->
         <div class="eligibilitycontentcontainer registercontainerreducer mt-4 mb-4" style="background-color:#fff!important;" data-aos="fade-up">
           <div class="mt-4" style="width:100%;display:flex;justify-content:center!important;align-items:center;flex-direction:column">
-            <img src="./assets/img/logos2/10.jpg" class="mb-3" style="width:300px;border-radius:7px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" alt="" srcset="">
-            <p style="margin-bottom:0;font-size: 24px;color:#05A9F4!important;font-weight:500;">Kotak Bank Securities</p>
+            <img src="<?php echo $res['photo'];?>" class="mb-3" style="width:300px;border-radius:7px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" alt="" srcset="">
+            <p style="margin-bottom:0;font-size: 24px;color:#05A9F4!important;font-weight:500;"><?php echo $res["name"];?></p>
           </div>
 
           <div class="mt-4 mb-4" style="width:100%;display:grid;justify-content:center!important;align-items:center;flex-direction:column">
@@ -181,33 +107,31 @@ if (isset($_POST["regname1"])) {
             <div class="col-xl-4 p-0 pe-3">
               <div style="box-shadow: 0px 0px 10px 0px rgba(0, 135, 204, 0.15);padding:20px;">
                 <p style="font-size:12px;margin-bottom:0;color:#05A9F4;">OPENINGS</p>
-                <p style="font-size:18px;word-break: break-all;color:#19305e;margin-bottom:0">50</p>
+                <p style="font-size:18px;word-break: break-all;color:#19305e;margin-bottom:0"><?php echo $res["requirement"];?></p>
               </div>
             </div>        
               
             <div class="col-xl-4 p-0 pe-3">
               <div style="box-shadow: 0px 0px 10px 0px rgba(0, 135, 204, 0.15);padding:20px;">
                 <p style="font-size:12px;margin-bottom:0;color:#05A9F4;">AVERAGE CTC</p>
-                <p style="font-size:18px;word-break: break-all;color:#19305e;margin-bottom:0"><span style="font-size:12px;">₹ </span>18,000</p>
+                <p style="font-size:18px;word-break: break-all;color:#19305e;margin-bottom:0"><span style="font-size:12px;">₹ </span><?php echo $res["ctc"];?></p>
               </div>
             </div>  
             <div class="col-xl-4 p-0">
               <div style="box-shadow: 0px 0px 10px 0px rgba(0, 135, 204, 0.15);padding:20px;">
                 <p style="font-size:12px;margin-bottom:0;color:#05A9F4;">MAXIMUM CTC</p>
-                <p style="font-size:18px;word-break: break-all;color:#19305e;margin-bottom:0"><span style="font-size:12px;">₹ </span>40,000</p>
+                <p style="font-size:18px;word-break: break-all;color:#19305e;margin-bottom:0"><span style="font-size:12px;">₹ </span><?php echo $res["max"];?></p>
               </div>
             </div>  
             </div>
             <div class="col-xl-8" style="justify-self:center;margin-top:25px!important;">
               <p style="font-size:12px;margin-bottom:0;color:#05A9F4;">BRIEF</p>
-              <p style="font-size:18px;word-break: break-all;color:#19305e;margin-bottom:0;">Kotak Mahindra Bank Limited is an Indian banking and financial services company headquartered in Mumbai. It offers banking products and financial services for corporate and retail customers in the areas of personal finance, investment banking, life insurance, and wealth management.</p>
+              <p style="font-size:18px;word-break: break-all;color:#19305e;margin-bottom:0;"><?php echo $res["about"];?></p>
             </div>
             <div class="col-xl-8" style="justify-self:center;margin-top:25px!important;">
               <p style="font-size:12px;margin-bottom:0;color:#05A9F4;">ELIGIBILITY</p>
               <p style="font-size:18px;word-break: break-all;color:#19305e;">
-              Bachelor's degree in a relevant field.
-              Minimum of 2 years of industry experience.
-              Strong communication and teamwork skills.
+                <?php echo $res["eligibility"];?>
               </p>
             </div>
           </div>
