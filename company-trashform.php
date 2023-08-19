@@ -25,7 +25,6 @@ if (isset($_POST["name"])) {
       $res = mysqli_query($conn, $query);
       if(!$res){
         echo mysqli_error($conn);
-        echo $query;
         exit;
       }
     }
