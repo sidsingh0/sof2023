@@ -1,5 +1,6 @@
 <?php include("./connect.php") ?>
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -45,6 +46,11 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
     <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+      ::placeholder {
+        color:#8c8c8c!important;
+      }
+    </style>
   </head>
 
   <body>
