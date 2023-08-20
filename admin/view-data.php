@@ -67,8 +67,8 @@ include("./partial.php");
                             </div>
                             
                         </div>
-                        <div class="card-body p-0 py-3">
-                            <form action="excel.php" method="post" style="display:flex;gap:5px;">
+                        <div class="card-body p-3">
+                            <form action="excel.php" method="post" style="display:flex;gap:10px;">
                                 <button type="submit" name="submit" value="students" class="btn btn-danger">Student Data</button>
                                 <button type="submit" name="submit" value="companies" class="btn btn-danger">Company Data</button>
                             </form>

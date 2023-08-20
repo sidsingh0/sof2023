@@ -98,6 +98,8 @@ $redirectUrl = $url . "/admin/login.php";
                                             <th>Field</th>
                                             <th>Company</th>
                                             <th style="display:none;">Category</th>
+                                            <th style="display:none;">Prime</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -120,7 +122,14 @@ $redirectUrl = $url . "/admin/login.php";
                                             <span class='text' style='color: #e55d34;font-weight: 400;'><i class='fas fa-times' style='margin-right: 5px;'></i>Absent</span>
                                         </button>";
                                             }
-
+                                            $bgbg='#fff';
+                                            $prime="404";
+                                            if ($res["top"] == 0) {
+                                                $bgbg = "#fff";
+                                            } else {
+                                                $bgbg = "#F0E5F8!important";
+                                                $prime="prime";
+                                            }
                                             $company_query = "select * from companies";
                                             $company_query_res = mysqli_query($conn, $company_query);
                                             $companylist = "";
@@ -128,13 +137,14 @@ $redirectUrl = $url . "/admin/login.php";
                                                 $companylist .= "<option value='" . $company['id'] . "'>" . $company['company_name'] . "</option>";
                                             }
 
-                                            echo "<tr>
+                                            echo "<tr style='background-color:$bgbg'>
                                                     <td>" . $i . "</td>
                                                     <td>" . $res['first_name'] . " " . $res['last_name'] . "</td>
                                                     <td>" . $res['phone'] . "</td>
                                                     <td>" . $res['apti_marks'] . "</td>
                                                     <td>" . $res['field'] . "</td>
                                                     <td style='display:flex;gap:5px;'>
+                                                    
                                                     <select class='select-state-h' onchange='btneanbler(this," . $res['phone'] . ")' style='width:80%' placeholder='Company'>
                                                         <option value=''></option>
                                                         $companylist
@@ -142,6 +152,7 @@ $redirectUrl = $url . "/admin/login.php";
                                                     <button id=" . $res['phone'] . " onclick='allot(this)' style='border:none;height: 33px;color: #39b16d;background-color:#d8efe2;border-radius:4px;padding:6px 12px;' disabled><i class='fas fa-chevron-right'></i></button>
                                                     </td>
                                                     <td style='display:none'>".$res['category']."</td>
+                                                    <td style='display:none'>".$prime."</td>
                                                 </tr>";
                                             $i++;
                                         }
@@ -181,7 +192,7 @@ $redirectUrl = $url . "/admin/login.php";
                                     $tips_company_res=mysqli_query($conn,$tips_company);
                                     if (mysqli_num_rows($tips_company_res)>0){
                                         echo '
-                                            <div class="mb-3" style="display:grid;grid-template-columns:auto 1fr;gap:7px;">
+                                            <div class="mb-4" style="display:grid;grid-template-columns:auto 1fr;gap:7px;">
                                                 <p style="color:#302a68;margin:0;padding:0.375rem 0.75rem;">'.$item.'</p>
                                             <div class="d-flex" style="gap:7px;flex-wrap:wrap">
                                         ';
