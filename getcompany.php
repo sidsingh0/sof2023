@@ -110,7 +110,7 @@ if (isset($_GET["companyid"])) {
     </div>
   </div>
 
-  <main style="">
+  <main>
     <section id="register" class="register">
       <div class="container">
         <!-- <div class="section-title">
