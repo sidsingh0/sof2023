@@ -151,7 +151,7 @@ if (isset($_POST["name"])) {
 
                     echo "<tr>
                             <td>" . $i . "</td>
-                            <td><a style='color:#9A53D2;' href='#'>" . $res['name'] . "</a></td>
+                            <td><a style='color:#9A53D2;' href='getcompany.php?companyid=".$res['id']."'>" . $res['name'] . "</a></td>
                             <td>" . substr($res['about'], 0, 39) . "...</td>
                             <td>" . $res['requirement'] . "</td>
                             <td>" . substr($res['eligibility'], 0, 39). "...</td>

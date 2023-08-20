@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2023 at 09:38 PM
+-- Generation Time: Aug 20, 2023 at 10:12 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -123,15 +123,17 @@ CREATE TABLE `trash` (
   `about` text NOT NULL,
   `eligibility` text NOT NULL,
   `ctc` varchar(50) NOT NULL,
-  `photo` varchar(500) NOT NULL
+  `photo` varchar(500) NOT NULL,
+  `max` varchar(50) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `trash`
 --
 
-INSERT INTO `trash` (`id`, `name`, `requirement`, `about`, `eligibility`, `ctc`, `photo`) VALUES
-(1, 'Test', '49', 'very nice company lorem ipsum dolor very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor ', 'must be 10th pass very nice company lorem ipsum dolor  very nice company lorem ipsum dolor very nice company lorem ipsum dolor  very nice company lorem ipsum dolor ', '456930', 'uploads/Test.jpg');
+INSERT INTO `trash` (`id`, `name`, `requirement`, `about`, `eligibility`, `ctc`, `photo`, `max`) VALUES
+(1, 'Test', '49', 'very nice company lorem ipsum dolor very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor  very nice company lorem ipsum dolor ', 'must be 10th pass very nice company lorem ipsum dolor  very nice company lorem ipsum dolor very nice company lorem ipsum dolor  very nice company lorem ipsum dolor ', '456930', 'uploads/Test.jpg', '500000'),
+(2, 'TCS', '10', 'very nice company lorem ipsum dolor very nice company lorem ipsum dolor very nice company lorem ipsum dolor very nice company lorem ipsum dolor very nice company lorem ipsum dolor very nice company lorem ipsum dolor', 'must be 12th pass, must be in btech', '900000', 'uploads/TCS.jpg', '1000000');
 
 -- --------------------------------------------------------
 
@@ -214,7 +216,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `trash`
 --
 ALTER TABLE `trash`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
