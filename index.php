@@ -1,4 +1,6 @@
-
+<?php 
+include("./connect.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -168,51 +170,13 @@
 
         <div class="clients-slider swiper">
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="assets/img/logos2/1.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/2.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/3.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/4.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/5.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/6.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/7.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/8.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/9.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/10.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/11.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/12.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/13.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/14.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/15.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/16.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/17.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/18.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/19.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/20.jpg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/21.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/22.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/23.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/24.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/25.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/26.jpeg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/27.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/28.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/29.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/30.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/31.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/32.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/33.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/34.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/35.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/36.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/37.webp" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/38.svg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/39.jpeg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/40.jpeg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/41.jpeg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/42.jpeg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/43.jpeg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/44.jpeg" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/logos2/45.jpeg" class="img-fluid" alt=""></div>
+            <?php 
+            $swiper = "select * from trash";
+            $res_swiper = mysqli_query($conn, $swiper);
+            while($res=$res_swiper->fetch_assoc()){
+              echo '<div class="swiper-slide"><a href="getcompany.php?companyid='.$res["id"].'" ><img src="'.$res["photo"].'" class="img-fluid" alt=""></a></div>';
+            } 
+          ?>
           </div>
           <div class="swiper-pagination"></div>
         </div>

@@ -8,7 +8,28 @@ if (isset($_GET["companyid"])) {
     echo mysqli_error($conn);
     exit;
   }
+  if(mysqli_num_rows($res) < 1){
+    $data = [
+      "success" => 0,
+      "message" => "Invalid Request!"
+    ];
+    $jsonData = json_encode($data);
+    $encodedData = urlencode($jsonData);
+    $redirectUrl = "index.php?data=" . $encodedData;
+    header("Location: " . $redirectUrl);
+    exit;
+  }
   $res=$res->fetch_assoc();
+}else{
+  $data = [
+    "success" => 0,
+    "message" => "Invalid Request!"
+  ];
+  $jsonData = json_encode($data);
+  $encodedData = urlencode($jsonData);
+  $redirectUrl = "index.php?data=" . $encodedData;
+  header("Location: " . $redirectUrl);
+  exit;
 }
 ?>
 
@@ -89,7 +110,7 @@ if (isset($_GET["companyid"])) {
     </div>
   </div>
 
-  <main style="">
+  <main>
     <section id="register" class="register">
       <div class="container">
         <!-- <div class="section-title">
