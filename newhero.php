@@ -142,10 +142,12 @@ include("./connect.php");
 
     .newcta {
       background-color: #e03a3c;
+      cursor: pointer;
       color: #f6f6f6;
       padding: 11px 30px 11px 35px;
       border-radius: 35px;
       font-size: 14px;
+      transition: 0.3s;
       font-weight: 600 !important;
       box-shadow: 0 0 8px rgba(224, 58, 60, 0.5);
     }
@@ -206,7 +208,25 @@ include("./connect.php");
     .mmenu>a {
       padding: 12px 20px;
     }
-
+    #mmenu2container{
+      display: none;
+    }
+    .mmenu2{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      box-shadow: 0 0 2px rgba(120, 120, 120, 0.3);
+      border-radius: 10px;
+      position: absolute;
+      top: 80px;
+      right: 130px;
+      transform: translate(100%);
+    }
+    .mmenu2>a {
+      padding: 12px 20px;
+    }
     #toggler {
       display: none !important;
     }
@@ -481,6 +501,23 @@ include("./connect.php");
 
     /* 212427 */
 
+    .naver {
+      text-decoration: none;
+      background-image: linear-gradient(180deg, transparent 65%, rgba(224, 58, 60, 0.7) 0);
+      background-repeat: no-repeat;
+      background-size: 0 100%;
+      transition: background-size .4s ease;
+    }
+
+    .naver:hover {
+      background-size: 100% 100%;
+    }
+
+    .newcta:hover {
+      background-color: rgba(224, 58, 60, 0.7) !important;
+      color: #f6f6f6 !important;
+      border: none;
+    }
   </style>
 </head>
 
@@ -491,17 +528,17 @@ include("./connect.php");
   <header class="newnavbarheader">
     <div class="sectional">
       <div class="newnavbar">
-        <div class="newnavbar_logos">
+        <a href="/index.php" class="newnavbar_logos">
           <img src="./assets/img/sof3.png" style="padding-right: 10px" alt="" srcset="" />
           <img src="./assets/img/azadi.png" style="padding-left: 10px; border-left: 1px solid grey" alt="" srcset="" />
-        </div>
+  </a>
         <div class="newnavbar_links">
-          <a href="index.php">Home</a>
-          <a href="index.php#companies">Companies</a>
-          <a href="index.php#contact">Contact Us </a>
+          <a class="naver" style="color:black;font-weight:400;" href="#heropart">Home</a>
+          <a class="naver" style="color:black;font-weight:400;" href="#companiespart">Companies</a>
+          <a class="naver" style="color:black;font-weight:400;" href="#contact">Contact Us </a>
         </div>
         <div class="newnavbar_btns">
-          <a class="newcta">Apply now <i class="fa-solid fa-chevron-down" style="font-size: 12px; font-weight: 600"></i></a>
+          <a class="newcta" id="mmenu2toggle">Apply now <i class="fa-solid fa-chevron-down" style="font-size: 12px; font-weight: 600"></i></a>
           <input type="checkbox" id="toggler" />
           <label for="toggler" id="togglerlabel">
             <svg class="inline-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 32 22.5" enable-background="new 0 0 32 22.5" xml:space="preserve">
@@ -522,16 +559,23 @@ include("./connect.php");
             <a>Home</a>
             <a>View your status</a>
             <a>Contact Us</a>
-            <a style="font-weight: 600; color: #e03a3c">Students <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
-            <a style="font-weight: 600; color: #e03a3c">Company
+            <a href="/student-register.php" style="font-weight: 600; color: #e03a3c">Students <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
+            <a href="/company-register.php" style="font-weight: 600; color: #e03a3c">Company
               <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
+          </div>
+          <div class="" id="mmenu2container">
+          <div class="mmenu2" id="mmenu2">
+            <a href="/student-register.php" style="font-weight: 600; color: #e03a3c">Students <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
+            <a href="/company-register.php" style="font-weight: 600; color: #e03a3c">Company
+              <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
+          </div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <section style="margin-top: 60px">
+  <section style="margin-top: 60px" id="heropart">
     <div class="sectional herotext">
       <p class="herotext_head">SIDDHARTH OVALEKAR FOUNDATION & NHITM</p>
       <img class="cherotext_headimg" src="./assets/img/cherotext.png" alt="" srcset="" />
@@ -546,8 +590,8 @@ include("./connect.php");
         prospects.
       </p>
       <div class="herotextbtngrp">
-        <a class="newcta" style="margin-top: 2px;">Students<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
-        <a class="newcta" style="box-shadow: none;border: 2px solid #CFCFCF;background-color: #f6f6f6;color:black;">Company<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
+        <a href="/student-register.php" class="newcta" style="margin-top: 2px;">Students<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
+        <a href="/student-register.php" class="newcta" style="box-shadow: none;border: 2px solid #CFCFCF;background-color: #f6f6f6;color:black;">Company<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
       </div>
     </div>
   </section>
@@ -557,7 +601,7 @@ include("./connect.php");
       <div class="promovid">
         <img src="./assets/img/videobg.png" class="promovidimg" alt="" srcset="">
         <img src="./assets/img/play.png" class="promovidplay" id="promovidplay">
-        
+
         <!-- vid btn -->
         <a href="./assets/video/main.mp4" class="glightbox play-btn mb-4" style="display: none!important;"></a>
         <!-- vid btn end -->
@@ -609,7 +653,7 @@ include("./connect.php");
               </div>
             </div> <!-- End Icon Box -->
 
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="500" id="companiespart">
               <div class="icon-box">
                 <i class="bi bi-graph-up-arrow"></i>
                 <h3>Eligibility</h3>
@@ -623,8 +667,8 @@ include("./connect.php");
           <h3 style="font-family:'switzer',sans-serif;">About Us</h3>
           <p>Siddharth Ovalekar Foundation (SOF) is organizing Job Fair 2023 in collaboration with New Horizon Institute of Technology & Management. Over 50 companies will be participating in the event, recruiting students from a diverse range of fields. Register today to seize exciting opportunities!</p>
           <div class="herotextbtngrp">
-            <a class="newcta" style="margin-top: 2px;">Students<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
-            <a class="newcta" style="box-shadow: none;border: 2px solid #CFCFCF;background-color: #f6f6f6;color:black;">Company<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
+            <a href="/student-register.php" class="newcta" style="margin-top: 2px;">Students<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
+            <a href="/student-register.php" class="newcta" style="box-shadow: none;border: 2px solid #CFCFCF;background-color: #f6f6f6;color:black;">Company<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
           </div>
         </div>
 
@@ -688,45 +732,45 @@ include("./connect.php");
     </section>
 
   <section id="contact" class="contact pt-0">
-      <div class="container" data-aos="fade-up">
+    <div class="container" data-aos="fade-up">
 
-        <div class="mb-4" style="text-align: center;">
-          <h2 style="font-family: 'switzer',sans-serif;font-weight:700;">Reach us</h2>
-          <p>Don't hesitate to reach out to us. We're here to help! Contact us now.</p>
+      <div class="mb-4" style="text-align: center;">
+        <h2 style="font-family: 'switzer',sans-serif;font-weight:700;">Reach us</h2>
+        <p>Don't hesitate to reach out to us. We're here to help! Contact us now.</p>
+      </div>
+
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="col-lg-6">
+          <div class="php-email-form">
+            <div class="row">
+              <div class="col form-group">
+                <input type="text" name="name" class="form-control" id="name1" placeholder="Your Name" required>
+              </div>
+              <div class="col form-group">
+                <input type="email" class="form-control" name="email" id="email1" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" name="subject" id="subject1" placeholder="Phone" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="query1" id="query1" rows="5" placeholder="Message" required></textarea>
+            </div>
+
+            <div class="text-center"><button type="submit" id="mailbutton" style="border-radius: 35px;">Send Message</button></div>
+          </div>
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-6">
-            <div class="php-email-form">
-              <div class="row">
-                <div class="col form-group">
-                  <input type="text" name="name" class="form-control" id="name1" placeholder="Your Name" required>
-                </div>
-                <div class="col form-group">
-                  <input type="email" class="form-control" name="email" id="email1" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="number" class="form-control" name="subject" id="subject1" placeholder="Phone" required>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="query1" id="query1" rows="5" placeholder="Message" required></textarea>
-              </div>
-              
-              <div class="text-center"><button type="submit" id="mailbutton" style="border-radius: 35px;">Send Message</button></div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 gmaps">
-            <iframe class="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.363638844756!2d72.97172697475243!3d19.266546345963782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bb976ea62a8d%3A0x4859c81f415a6bb1!2sNew%20Horizon%20Scholar&#39;s%20School!5e0!3m2!1sen!2sin!4v1691585155406!5m2!1sen!2sin" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen=""></iframe>
-          </div>
-
+        <div class="col-lg-6 gmaps">
+          <iframe class="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.363638844756!2d72.97172697475243!3d19.266546345963782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bb976ea62a8d%3A0x4859c81f415a6bb1!2sNew%20Horizon%20Scholar&#39;s%20School!5e0!3m2!1sen!2sin!4v1691585155406!5m2!1sen!2sin" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen=""></iframe>
         </div>
 
       </div>
-    </section>
-  
+
+    </div>
+  </section>
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="sectional d-md-flex py-4" style="align-items: center">
@@ -759,7 +803,7 @@ include("./connect.php");
   <script src="assets/js/main.js"></script>
 
   <script>
-    $("#promovidplay").on("click", function(){
+    $("#promovidplay").on("click", function() {
       $(".glightbox")[0].click();
     });
 
@@ -780,6 +824,9 @@ include("./connect.php");
         }
     })
     showEngineering(document.getElementById("eligibilityengineering"))
+    $("#mmenu2toggle").on("click",function(){
+      $("#mmenu2container").toggle();
+    })
   </script>
 </body>
 
