@@ -5,7 +5,7 @@
     // $database="u170697705_sof";
     $username_db="root";
     $password="";
-    $database="sof3";
+    $database="sof";
 
     $conn= mysqli_connect($servername,$username_db,$password,$database);
     if (!$conn) {

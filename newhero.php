@@ -480,6 +480,71 @@ include("./connect.php");
     }
 
     /* 212427 */
+    .play-btn {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto;
+      background: radial-gradient(#009961 50%, rgba(0, 153, 97, 0.4) 52%);
+      border-radius: 50%;
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .play-btn::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-40%) translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 15px solid #fff;
+      z-index: 100;
+      transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    .play-btn::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      animation-delay: 0s;
+      animation: pulsate-btn 3s;
+      animation-direction: forwards;
+      animation-iteration-count: infinite;
+      animation-timing-function: steps;
+      opacity: 1;
+      border-radius: 50%;
+      border: 5px solid rgba(0, 153, 97, 0.7);
+      top: -15%;
+      left: -15%;
+      background: rgba(198, 16, 0, 0);
+    }
+
+    .play-btn:hover::after {
+      border-left: 15px solid #009961;
+      transform: scale(20);
+    }
+
+    .play-btn:hover::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-40%) translateY(-50%);
+      width: 0;
+      height: 0;
+      border: none;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 15px solid #fff;
+      z-index: 200;
+      animation: none;
+      border-radius: 0;
+    }
   </style>
 </head>
 
@@ -556,6 +621,11 @@ include("./connect.php");
       <div class="promovid">
         <img src="./assets/img/videobg.png" class="promovidimg" alt="" srcset="">
         <img src="./assets/img/play.png" class="promovidplay" id="promovidplay">
+        
+        <!-- vid btn -->
+        <a href="./assets/video/main.mp4" class="glightbox play-btn mb-4" style="display: none!important;"></a>
+        <!-- vid btn end -->
+
         <img src="./assets/img/registrations.png" class="promovidreg">
       </div>
       <div class="promocontent">
@@ -716,6 +786,11 @@ include("./connect.php");
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script>
+    $("#promovidplay").on("click", function(){
+      $(".glightbox")[0].click();
+    })
+  </script>
 </body>
 
 </html>
