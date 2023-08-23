@@ -56,34 +56,8 @@
   <body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- ======= Header ======= -->
-   <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-      <div class="mylogo me-auto">
-        <img src="assets/img/sof.jpeg" style="border-left: none;padding-left: 0;" class="apsitlogo" alt="" srcset="">
-        <img src="assets/img/nhss.jpeg" class="apsitlogo" alt="" srcset="">
-        <!-- <img src="assets/img/logos/job4u.png" id="apsitlogo" alt="" srcset=""> -->
-      </div>
-
-
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt=""></a>-->
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active hover-underline-animation" href="/index.php#videohero">Home</a></li>
-          <li><a class="nav-link scrollto hover-underline-animation" href="/index.php#about">About</a></li>
-          <li><a class="nav-link scrollto hover-underline-animation" href="/index.php#contact">Contact</a></li>
-          <li class="dropdown" style="cursor:pointer"><a id="myherobutton"><span>Apply Now</span> <i class="bi bi-chevron-down"></i></a>
-            <ul style="border-radius: 10px;">
-              <li><a style="margin:0px" href="/student-register.php">Student</a></li>
-              <li><a style="margin:0px" href="/company-register.php">Company</a></li>
-            </ul>
-          </li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-    </div>
-  </header><!-- End Header -->
+    <?php include("./navbar.php"); ?>
+<!-- End Header -->
     <!-- End Header -->
     <div class="progress-header">
       <div class="progress-container">
