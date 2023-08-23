@@ -533,9 +533,9 @@ include("./connect.php");
           <img src="./assets/img/azadi.png" style="padding-left: 10px; border-left: 1px solid grey" alt="" srcset="" />
   </a>
         <div class="newnavbar_links">
-          <a class="naver" style="color:black;font-weight:400;" href="#heropart">Home</a>
-          <a class="naver" style="color:black;font-weight:400;" href="#companiespart">Companies</a>
-          <a class="naver" style="color:black;font-weight:400;" href="#contact">Contact Us </a>
+          <a class="naver" style="color:black;font-weight:400;" href="/index.php#heropart">Home</a>
+          <a class="naver" style="color:black;font-weight:400;" href="/index.php#companiespart">Companies</a>
+          <a class="naver" style="color:black;font-weight:400;" href="/index.php#contact">Contact Us </a>
         </div>
         <div class="newnavbar_btns">
           <a class="newcta" id="mmenu2toggle">Apply now <i class="fa-solid fa-chevron-down" style="font-size: 12px; font-weight: 600"></i></a>
@@ -556,9 +556,9 @@ include("./connect.php");
               </g>
             </svg></label>
           <div class="mmenu">
-            <a>Home</a>
-            <a>View your status</a>
-            <a>Contact Us</a>
+            <a href="/index.php#heropart">Home</a>
+            <a href="/index.php#companiespart">Company</a>
+            <a href="/index.php#contact">Contact Us</a>
             <a href="/student-register.php" style="font-weight: 600; color: #e03a3c">Students <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
             <a href="/company-register.php" style="font-weight: 600; color: #e03a3c">Company
               <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
@@ -591,7 +591,7 @@ include("./connect.php");
       </p>
       <div class="herotextbtngrp">
         <a href="/student-register.php" class="newcta" style="margin-top: 2px;">Students<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
-        <a href="/student-register.php" class="newcta" style="box-shadow: none;border: 2px solid #CFCFCF;background-color: #f6f6f6;color:black;">Company<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
+        <a href="/company-register.php" class="newcta" style="box-shadow: none;border: 2px solid #CFCFCF;background-color: #f6f6f6;color:black;">Company<i class="fa-solid fa-chevron-right" style="margin-left:5px;font-size: 12px; font-weight: 600"></i></a>
       </div>
     </div>
   </section>
@@ -734,7 +734,7 @@ include("./connect.php");
   <section id="contact" class="contact pt-0">
     <div class="container" data-aos="fade-up">
 
-      <div class="mb-4" style="text-align: center;">
+      <div class="section-title mb-4" style="text-align: center;">
         <h2 style="font-family: 'switzer',sans-serif;font-weight:700;">Reach us</h2>
         <p>Don't hesitate to reach out to us. We're here to help! Contact us now.</p>
       </div>
