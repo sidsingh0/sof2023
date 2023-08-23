@@ -480,71 +480,7 @@ include("./connect.php");
     }
 
     /* 212427 */
-    .play-btn {
-      width: 94px;
-      height: 94px;
-      margin: 0 auto;
-      background: radial-gradient(#009961 50%, rgba(0, 153, 97, 0.4) 52%);
-      border-radius: 50%;
-      display: block;
-      overflow: hidden;
-      position: relative;
-    }
 
-    .play-btn::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-40%) translateY(-50%);
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 15px solid #fff;
-      z-index: 100;
-      transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    }
-
-    .play-btn::before {
-      content: "";
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      animation-delay: 0s;
-      animation: pulsate-btn 3s;
-      animation-direction: forwards;
-      animation-iteration-count: infinite;
-      animation-timing-function: steps;
-      opacity: 1;
-      border-radius: 50%;
-      border: 5px solid rgba(0, 153, 97, 0.7);
-      top: -15%;
-      left: -15%;
-      background: rgba(198, 16, 0, 0);
-    }
-
-    .play-btn:hover::after {
-      border-left: 15px solid #009961;
-      transform: scale(20);
-    }
-
-    .play-btn:hover::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-40%) translateY(-50%);
-      width: 0;
-      height: 0;
-      border: none;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 15px solid #fff;
-      z-index: 200;
-      animation: none;
-      border-radius: 0;
-    }
   </style>
 </head>
 
@@ -560,9 +496,9 @@ include("./connect.php");
           <img src="./assets/img/azadi.png" style="padding-left: 10px; border-left: 1px solid grey" alt="" srcset="" />
         </div>
         <div class="newnavbar_links">
-          <a>Home</a>
-          <a>Companies</a>
-          <a>Contact Us </a>
+          <a href="index.php">Home</a>
+          <a href="index.php#companies">Companies</a>
+          <a href="index.php#contact">Contact Us </a>
         </div>
         <div class="newnavbar_btns">
           <a class="newcta">Apply now <i class="fa-solid fa-chevron-down" style="font-size: 12px; font-weight: 600"></i></a>
@@ -697,7 +633,9 @@ include("./connect.php");
 
   </section><!-- End About Section -->
 
-  <section style="padding:10px 0;background-color: #fff!important;margin-bottom:60px;">
+
+
+  <section style="padding:10px 0;background-color: #fff!important;margin-bottom:60px;" id="companies">
     <div class="sectional">
       <div class="clients-slider swiper">
         <div class="swiper-wrapper align-items-center">
@@ -714,6 +652,40 @@ include("./connect.php");
     </div>
     </div>
   </section>
+
+  <section id="eligibility" class="eligibility" style="background-color: #f4f4f4!important;">
+      <div class="container">
+        <h2 class="section-title meratitle p-3" style="font-size: 40px;font-weight:bold;text-transform: none;color: #1a2533;">Open positions for</h2>
+        <div class="row align-items-center mt-4 eligibilitymobileinvert">
+          <div class="col-lg-4 col-md-6 eligibilitynav">
+            <div class="eligibilitynav-card" id="eligibilityengineering" onclick="showEngineering(this)">
+              <i style="font-size: 35px;" class="eligibilitylogos bi bi-cpu"></i>
+              <p style="color: #1a2533;" class="eligibilitylogos">Engineering</p>
+            </div>
+            <div class="eligibilitynav-card" id="eligibilitynonengineering"  onclick="showNonengineering(this)">
+              <i style="font-size: 35px;" class="eligibilitylogos bi bi-mortarboard"></i>
+              <p style="color: #1a2533;" class="eligibilitylogos">Non-Engineering</p>
+            </div>
+            <div class="eligibilitynav-card"  id="eligibilityhsc" onclick="showHsc(this)">
+              <i style="font-size: 35px;" class="eligibilitylogos bi bi-book"></i>
+              <p style="color: #1a2533;" class="eligibilitylogos">HSC</p>
+            </div>            
+          </div>
+          <div class="col-lg-8 col-md-6 eligibilitycontent">
+            <div class="eligibilitycontentcontainer">
+              <ul class="eligibilitylist eligibilitylist1" id="eligibilitylist">
+                <li>Computer Science Engineering</li>
+                <li>Information Technology Engineering</li>
+                <li>Electronics and Telecommunications Engineering</li>
+                <li>Electrical Engineering</li>
+                <li>Mechanical Engineering</li>
+                <li>Civil Engineering</li>
+              </ul> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <section id="contact" class="contact pt-0">
       <div class="container" data-aos="fade-up">
@@ -789,7 +761,25 @@ include("./connect.php");
   <script>
     $("#promovidplay").on("click", function(){
       $(".glightbox")[0].click();
+    });
+
+    $("#accordion").on("hide.bs.collapse show.bs.collapse", e => {
+      $(e.target)
+        .prev()
+        .find("i:last-child")
+        .toggleClass("fa-minus fa-plus");
+    });
+
+    $("#mailbutton").on('click',function(){
+        const email=$('#email1').val();
+        const name=$('#name1').val();
+        const phone=$('#subject1').val();
+        const query=$('#query1').val();
+        if (email && name && phone && query){
+          window.open(`mailto:ovalekarsiddharth@gmail.com?subject=Inquiry Mega Job Fair&body=${query} (Name: ${name}, Phone: ${phone}, Email: ${email})`);
+        }
     })
+    showEngineering(document.getElementById("eligibilityengineering"))
   </script>
 </body>
 
