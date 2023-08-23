@@ -388,3 +388,6 @@ function handleCategoryChange() {
     `
   }
 }
+$("#mmenu2toggle").on("click",function(){
+  $("#mmenu2container").toggle();
+})

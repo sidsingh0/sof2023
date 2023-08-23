@@ -295,10 +295,8 @@ include("./connect.php");
           window.open(`mailto:ovalekarsiddharth@gmail.com?subject=Inquiry Mega Job Fair&body=${query} (Name: ${name}, Phone: ${phone}, Email: ${email})`);
         }
     })
-    showEngineering(document.getElementById("eligibilityengineering"))
-    $("#mmenu2toggle").on("click",function(){
-      $("#mmenu2container").toggle();
-    })
+    showEngineering(document.getElementById("eligibilityengineering"));
+    
   </script>
 </body>
 

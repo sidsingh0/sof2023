@@ -2969,6 +2969,7 @@ body {
 }
 
 .mmenu {
+  width: 200px;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -2977,8 +2978,8 @@ body {
   box-shadow: 0 0 2px rgba(120, 120, 120, 0.3);
   border-radius: 10px;
   position: absolute;
-  top: 80px;
-  right: 110px;
+  top: 91px;
+    right: 196px;
   transform: translate(100%);
 }
 
@@ -3217,7 +3218,8 @@ input[type="checkbox"]:checked+label+.mmenu {
   }
 
   .mmenu {
-    right: 155px;
+    top:90px;
+    right: 200px;
   }
 }
 
