@@ -156,7 +156,7 @@
    * Clients Slider
    */
   new Swiper('.clients-slider', {
-    speed: 250,
+    speed: 150,
     loop: true,
     autoplay: {
       delay: 5000,
@@ -247,7 +247,7 @@
    * Testimonials slider
    */
   new Swiper('.testimonials-slider', {
-    speed: 600,
+    speed: 300,
     loop: true,
     autoplay: {
       delay: 5000,
@@ -290,12 +290,7 @@
   new PureCounter();
 
 })()
-function progressBarScroll() {
-  let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
-      height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
-      scrolled = (winScroll / height) * 100;
-  document.getElementById("progressBar").style.width = scrolled + "%";
-}
+
 
 function showEngineering(element){
   var eligibilityList = document.getElementById("eligibilitylist");
@@ -389,7 +384,3 @@ function handleCategoryChange() {
     `
   }
 }
-
-window.onscroll = function () {
-  progressBarScroll();
-};
