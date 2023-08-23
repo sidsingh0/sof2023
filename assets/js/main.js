@@ -14,6 +14,10 @@
     }
   }
 
+  const glightbox = GLightbox({
+    selector: '.glightbox'
+  });
+
   /**
    * Easy event listener function
    */
