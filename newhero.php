@@ -603,7 +603,7 @@ include("./connect.php");
         <img src="./assets/img/play.png" class="promovidplay" id="promovidplay">
 
         <!-- vid btn -->
-        <a href="./assets/video/main.mp4" class="glightbox play-btn mb-4" style="display: none!important;"></a>
+        <a href="https://vimeo.com/857269922?share=copy" class="glightbox play-btn mb-4" style="display: none!important;"></a>
         <!-- vid btn end -->
 
         <img src="./assets/img/registrations.png" class="promovidreg">
