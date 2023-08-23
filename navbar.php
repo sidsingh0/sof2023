@@ -37,9 +37,9 @@
               <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
           </div>
           <div class="" id="mmenu2container">
-          <div class="mmenu2" id="mmenu2">
-            <a href="/student-register.php" style="font-weight: 600; color: #e03a3c">Students <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
-            <a href="/company-register.php" style="font-weight: 600; color: #e03a3c">Company
+          <div class="mmenu2" id="mmenu2" style="width:200px;">
+            <a href="/student-register.php" style="font-weight: 400; color:black;">Students <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
+            <a href="/company-register.php" style="font-weight: 400; color:black;">Company
               <i class="fa-solid fa-chevron-right" style="font-size: 14px; font-weight: 600"></i></a>
           </div>
           </div>
