@@ -3302,3 +3302,8 @@ input[type="checkbox"]:checked+label+.mmenu {
   color: #f6f6f6 !important;
   border: none;
 }
+
+
+.newfooter{
+  background-color: black;
+}
